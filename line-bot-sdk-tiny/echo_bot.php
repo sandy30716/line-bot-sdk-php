@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright 2016 LINE Corporation
  *
@@ -15,30 +14,26 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 require_once('./LINEBotTiny.php');
-
-$channelAccessToken = '/lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73Gm76nhKPnhd9tVLwcX/SoTiQ91o+WytapLvkDuXfQz6ZzxAnXLWMlK6OPv1XRmiLj308Hc4yenYjOTFF/As8UF59izRAQdB04t89/1O/w1cDnyilFU=';
-$channelSecret = 'bbd40ae0c329ee4732e0b24c1148a37a';
+$channelAccessToken = '<your channel access token>';
+$channelSecret = '<your channel secret>';
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];
-            $replyMsg = $message['text'];
+            /*$replyMsg = $message['text'];
             if(strpos($message['text'], '賺錢') !== false){
                 $replyMsg = '近三月績效排行前三名為...';
-            }
-            else{
-                $replyMsg = $message['text'];
-            }
-            
+            }*/
             switch ($message['type']) {
                 case 'text':
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
-                            array('type' => 'text','text' => $replyMsg)
+                            array(
+                                'type' => 'text',
+                                'text' => $message['text']
                             )
                         )
                     ));
@@ -53,4 +48,5 @@ foreach ($client->parseEvents() as $event) {
             break;
     }
 };
+
 
