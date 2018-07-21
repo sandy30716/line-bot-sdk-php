@@ -31,13 +31,13 @@ foreach ($client->parseEvents() as $event) {
                 $replyMsg = '近三月績效排行前三名為...';
                 $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            $fundList
-                            /*array(
+                        'messages' =>$fundList 
+                        /*array(
+                            array(
                                 'type' => 'text',
                                 'text' => $replyMsg
-                            )*/
-                        )
+                            )
+                        )*/
                     ));
                 return;
             }
