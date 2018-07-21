@@ -34,7 +34,11 @@ foreach ($client->parseEvents() as $event) {
                             array(
                                 'type' => 'text',
                                 'text' => $replyMsg
-                            )
+                            ),
+                            array(
+                                'type' => 'text',
+                                'text' => '感謝您使用chatvisor服務'
+                            )                            
                         )
                     ));
                     break;
