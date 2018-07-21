@@ -35,7 +35,7 @@ foreach ($client->parseEvents() as $event) {
                             /*array(
                                 'type' => 'text',
                                 'text' => $replyMsg
-                            )*/,
+                            ),*/
                             $fundList
                         )
                     ));
