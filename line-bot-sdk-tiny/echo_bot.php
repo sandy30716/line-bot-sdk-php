@@ -31,13 +31,14 @@ foreach ($client->parseEvents() as $event) {
                 $replyMsg = '近三月績效排行前三名為...';
                 $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
-                        'messages' =>$fundList 
-                        /*array(
-                            array(
+                        'messages' =>
+                        array(
+                            /*array(
                                 'type' => 'text',
                                 'text' => $replyMsg
-                            )
-                        )*/
+                            )*/
+                            $fundList
+                        )
                     ));
                 return;
             }
@@ -65,94 +66,89 @@ foreach ($client->parseEvents() as $event) {
     }
 };
 $fundList=array (
-  'type' => 'template',
-  'altText' => 'this is a carousel template',
-  'template' => 
+  'type' => 'carousel',
+  'actions' => 
   array (
-    'type' => 'carousel',
-    'actions' => 
+  ),
+  'columns' => 
+  array (
+    0 => 
     array (
+      'title' => '復華中小精選基金',
+      'text' => '淨值81.49,近三個月報酬率17.81',
+      'actions' => 
+      array (
+        0 => 
+        array (
+          'type' => 'postback',
+          'label' => '加入觀察清單',
+          'text' => '將ＸＸＸ基金加入網銀觀察清單',
+          'data' => 'shoppingCart',
+        ),
+        1 => 
+        array (
+          'type' => 'postback',
+          'label' => '立即申購',
+          'text' => '立即申購ＸＸＸ基金',
+          'data' => 'buy',
+        ),
+        2 => 
+        array (
+          'type' => 'uri',
+          'label' => '看更多詳細資訊',
+          'uri' => 'https://www.esunbank.com.tw/bank/personal/wealth/fund/ranking',
+        ),
+      ),
     ),
-    'columns' => 
+    1 => 
     array (
-      0 => 
+      'title' => '統一台灣動力基金',
+      'text' => '淨值81.49,近三個月報酬率17.81',
+      'actions' => 
       array (
-        'title' => '復華中小精選基金',
-        'text' => '淨值81.49,近三個月報酬率17.81',
-        'actions' => 
+        0 => 
         array (
-          0 => 
-          array (
-            'type' => 'postback',
-            'label' => '加入觀察清單',
-            'text' => '將ＸＸＸ基金加入網銀觀察清單',
-            'data' => 'shoppingCart',
-          ),
-          1 => 
-          array (
-            'type' => 'postback',
-            'label' => '立即申購',
-            'text' => '立即申購ＸＸＸ基金',
-            'data' => 'buy',
-          ),
-          2 => 
-          array (
-            'type' => 'uri',
-            'label' => '看更多詳細資訊',
-            'uri' => 'https://www.esunbank.com.tw/bank/personal/wealth/fund/ranking',
-          ),
+          'type' => 'message',
+          'label' => '動作 1',
+          'text' => '動作 1',
+        ),
+        1 => 
+        array (
+          'type' => 'message',
+          'label' => '動作 2',
+          'text' => '動作 2',
+        ),
+        2 => 
+        array (
+          'type' => 'message',
+          'label' => '動作 3',
+          'text' => '動作 3',
         ),
       ),
-      1 => 
+    ),
+    2 => 
+    array (
+      'title' => '復華全方位基金',
+      'text' => '淨值81.49,近三個月報酬率17.81',
+      'actions' => 
       array (
-        'title' => '統一台灣動力基金',
-        'text' => '淨值81.49,近三個月報酬率17.81',
-        'actions' => 
+        0 => 
         array (
-          0 => 
-          array (
-            'type' => 'message',
-            'label' => '動作 1',
-            'text' => '動作 1',
-          ),
-          1 => 
-          array (
-            'type' => 'message',
-            'label' => '動作 2',
-            'text' => '動作 2',
-          ),
-          2 => 
-          array (
-            'type' => 'message',
-            'label' => '動作 3',
-            'text' => '動作 3',
-          ),
+          'type' => 'message',
+          'label' => '動作 1',
+          'text' => '動作 1',
         ),
-      ),
-      2 => 
-      array (
-        'title' => '復華全方位基金',
-        'text' => '淨值81.49,近三個月報酬率17.81',
-        'actions' => 
+        1 => 
         array (
-          0 => 
-          array (
-            'type' => 'message',
-            'label' => '動作 1',
-            'text' => '動作 1',
-          ),
-          1 => 
-          array (
-            'type' => 'message',
-            'label' => '動作 2',
-            'text' => '動作 2',
-          ),
-          2 => 
-          array (
-            'type' => 'message',
-            'label' => '動作 3',
-            'text' => '動作 3',
-          ),
+          'type' => 'message',
+          'label' => '動作 2',
+          'text' => '動作 2',
+        ),
+        2 => 
+        array (
+          'type' => 'message',
+          'label' => '動作 3',
+          'text' => '動作 3',
         ),
       ),
     ),
