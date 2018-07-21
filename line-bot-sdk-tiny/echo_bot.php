@@ -20,39 +20,6 @@ require_once('./LINEBotTiny.php');
 
 $channelAccessToken = '/lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73Gm76nhKPnhd9tVLwcX/SoTiQ91o+WytapLvkDuXfQz6ZzxAnXLWMlK6OPv1XRmiLj308Hc4yenYjOTFF/As8UF59izRAQdB04t89/1O/w1cDnyilFU=';
 $channelSecret = 'bbd40ae0c329ee4732e0b24c1148a37a';
-$replyMsg;
-$client = new LINEBotTiny($channelAccessToken, $channelSecret);
-foreach ($client->parseEvents() as $event) {
-    switch ($event['type']) {
-        case 'message':
-            $message = $event['message'];
-            $replyMsg = $message['text'];
-            if(strpos($message['text'], '賺錢') !== false){
-                $replyMsg = '近三月績效排行前三名為...';
-                $reply = $simpleReply;
-            }
-            
-            switch ($message['type']) {
-                case 'text':
-                    $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            $reply
-                            )
-                        )
-                    ));
-                    break;
-                default:
-                    error_log("Unsupporeted message type: " . $message['type']);
-                    break;
-            }
-            break;
-        default:
-            error_log("Unsupporeted event type: " . $event['type']);
-            break;
-    }
-};
-$simpleReply= array('type' => 'text','text' => $replyMsg);
 $fundList=array (
   'type' => 'carousel',
   'actions' => 
@@ -142,3 +109,38 @@ $fundList=array (
     ),
   ),
 );
+$client = new LINEBotTiny($channelAccessToken, $channelSecret);
+foreach ($client->parseEvents() as $event) {
+    switch ($event['type']) {
+        case 'message':
+            $message = $event['message'];
+            $replyMsg = $message['text'];
+            if(strpos($message['text'], '賺錢') !== false){
+                $replyMsg = '近三月績效排行前三名為...';
+                $reply= array('type' => 'text','text' => $replyMsg);
+            }
+            else{
+                $reply= array('type' => 'text','text' => $message['text']);
+            }
+            
+            switch ($message['type']) {
+                case 'text':
+                    $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            $reply
+                            )
+                        )
+                    ));
+                    break;
+                default:
+                    error_log("Unsupporeted message type: " . $message['type']);
+                    break;
+            }
+            break;
+        default:
+            error_log("Unsupporeted event type: " . $event['type']);
+            break;
+    }
+};
+
