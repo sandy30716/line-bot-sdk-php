@@ -28,10 +28,9 @@ foreach ($client->parseEvents() as $event) {
             $replyMsg = $message['text'];
             if(strpos($message['text'], '賺錢') !== false){
                 $replyMsg = '近三月績效排行前三名為...';
-                $reply= array('type' => 'text','text' => $replyMsg);
             }
             else{
-                $reply= array('type' => 'text','text' => $message['text']);
+                $replyMsg = $message['text'];
             }
             
             switch ($message['type']) {
@@ -39,7 +38,7 @@ foreach ($client->parseEvents() as $event) {
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
-                            $reply
+                            array('type' => 'text','text' => $replyMsg)
                             )
                         )
                     ));
