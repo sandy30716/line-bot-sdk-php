@@ -32,11 +32,11 @@ foreach ($client->parseEvents() as $event) {
                 $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
-                            /*array(
+                            array(
                                 'type' => 'text',
                                 'text' => $replyMsg
-                            ),*/
-                            json_decode($fundListJson, true)
+                            )
+                            /*,json_decode($fundListJson, true)*/
                         )
                     ));
             }
