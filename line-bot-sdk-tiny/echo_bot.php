@@ -36,7 +36,7 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'text',
                                 'text' => $replyMsg
                             )
-                            /*,json_decode($fundListJson, true)*/
+                            ,$fundList
                         )
                     ));
             }
@@ -63,7 +63,7 @@ foreach ($client->parseEvents() as $event) {
             break;
     }
 };
-$fundListJson=array (
+$fundList=array (
   'type' => 'template',
   'altText' => 'this is a carousel template',
   'template' => 
