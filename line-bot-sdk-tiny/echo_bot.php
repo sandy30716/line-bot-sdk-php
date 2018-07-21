@@ -63,7 +63,7 @@ foreach ($client->parseEvents() as $event) {
             break;
     }
 };
-$fundListJson={
+$fundListJson='{
   "type": "template",
   "altText": "this is a carousel template",
   "template": {
@@ -137,6 +137,6 @@ $fundListJson={
       }
     ]
   }
-}
+}'
 
 
