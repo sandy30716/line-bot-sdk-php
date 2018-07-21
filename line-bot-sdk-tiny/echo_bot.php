@@ -29,18 +29,7 @@ foreach ($client->parseEvents() as $event) {
             $replyMsg = $message['text'];
             if(strpos($message['text'], '賺錢') !== false){
                 $replyMsg = '近三月績效排行前三名為...';
-                $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' =>
-                        array(
-                            /*array(
-                                'type' => 'text',
-                                'text' => $replyMsg
-                            )*/
-                            $fundList
-                        )
-                    ));
-                break;
+                $reply = $simpleReply;
             }
             
             switch ($message['type']) {
@@ -48,9 +37,7 @@ foreach ($client->parseEvents() as $event) {
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $replyMsg
+                            $reply
                             )
                         )
                     ));
@@ -65,6 +52,7 @@ foreach ($client->parseEvents() as $event) {
             break;
     }
 };
+$simpleReply= array('type' => 'text','text' => $replyMsg);
 $fundList=array (
   'type' => 'carousel',
   'actions' => 
