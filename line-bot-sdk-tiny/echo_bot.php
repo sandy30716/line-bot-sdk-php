@@ -22,10 +22,10 @@ foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];
-            /*$replyMsg = $message['text'];
+            $replyMsg = $message['text'];
             if(strpos($message['text'], '賺錢') !== false){
                 $replyMsg = '近三月績效排行前三名為...';
-            }*/
+            }
             switch ($message['type']) {
                 case 'text':
                     $client->replyMessage(array(
