@@ -40,7 +40,7 @@ foreach ($client->parseEvents() as $event) {
                             $fundList
                         )
                     ));
-                return;
+                break;
             }
             
             switch ($message['type']) {
