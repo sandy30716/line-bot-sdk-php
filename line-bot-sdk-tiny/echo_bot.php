@@ -131,7 +131,7 @@ foreach ($client->parseEvents() as $event) {
                             )
                         ));
                     }
-                    else{
+                    /*else{
                         $client->replyMessage(array(
                             'replyToken' => $event['replyToken'],
                             'messages' => array(
@@ -141,7 +141,7 @@ foreach ($client->parseEvents() as $event) {
                                 )
                             )
                         ));
-                    }
+                    }*/
                     break;
                 default:
                     error_log("Unsupporeted message type: " . $message['type']);
