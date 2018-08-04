@@ -139,8 +139,8 @@ $rebalance = array (
       array (
         'type' => 'postback',
         'label' => '看其他市場',
-        'text' => '動作 3',
-        'data' => '資料 3',
+        'text' => '看其他市場',
+        'data' => 'market',
       ),
       3 => 
       array (
@@ -243,6 +243,126 @@ $list=array (
   'type' => 'text',
   'text' => '已將復華全方位基金加入網銀觀察清單，立即登入網銀申購→https://ebank.esunbank.com.tw/index.jsp',
 );
+$market=array (
+  'type' => 'template',
+  'altText' => 'this is a carousel template',
+  'template' => 
+  array (
+    'type' => 'carousel',
+    'actions' => 
+    array (
+    ),
+    'columns' => 
+    array (
+      0 => 
+      array (
+        'title' => '北美',
+        'text' => '相對樂觀^_^',
+        'actions' => 
+        array (
+          0 => 
+          array (
+            'type' => 'postback',
+            'label' => 'NB美國多元企業機會基金',
+            'text' => '查看NB美國多元企業機會基金',
+            'data' => 'check&ar13',
+          ),
+          1 => 
+          array (
+            'type' => 'postback',
+            'label' => '美國高股息基金X股美元',
+            'text' => '查看美國高股息基金X股美元',
+            'data' => 'check&ap24',
+          ),
+          2 => 
+          array (
+            'type' => 'uri',
+            'label' => '看更多北美市場基金',
+            'uri' => 'https://www.esunbank.com.tw/event/wealth/fundworld/#America',
+          ),
+        ),
+      ),
+      1 => 
+      array (
+        'title' => '拉丁美洲',
+        'text' => '中立>"<',
+        'actions' => 
+        array (
+          0 => 
+          array (
+            'type' => 'message',
+            'label' => '富達拉丁美洲基金',
+            'text' => '動作 1',
+          ),
+          1 => 
+          array (
+            'type' => 'message',
+            'label' => '達富拉丁美洲基金',
+            'text' => '動作 2',
+          ),
+          2 => 
+          array (
+            'type' => 'message',
+            'label' => '看更多拉丁美洲市場基金',
+            'text' => '動作 3',
+          ),
+        ),
+      ),
+      2 => 
+      array (
+        'title' => '亞洲',
+        'text' => '悲觀QAQ',
+        'actions' => 
+        array (
+          0 => 
+          array (
+            'type' => 'message',
+            'label' => '富達新興亞洲基金',
+            'text' => '富達新興亞洲基金',
+          ),
+          1 => 
+          array (
+            'type' => 'message',
+            'label' => '動作 2',
+            'text' => '動作 2',
+          ),
+          2 => 
+          array (
+            'type' => 'message',
+            'label' => '看更多亞洲市場基金',
+            'text' => '看更多亞洲市場基金',
+          ),
+        ),
+      ),
+      3 => 
+      array (
+        'title' => '亞洲',
+        'text' => '文字',
+        'actions' => 
+        array (
+          0 => 
+          array (
+            'type' => 'message',
+            'label' => '動作 1',
+            'text' => '動作 1',
+          ),
+          1 => 
+          array (
+            'type' => 'message',
+            'label' => '動作 2',
+            'text' => '動作 2',
+          ),
+          2 => 
+          array (
+            'type' => 'message',
+            'label' => '動作 3',
+            'text' => '動作 3',
+          ),
+        ),
+      ),
+    ),
+  ),
+);
 
 
 
@@ -271,6 +391,10 @@ foreach ($client->parseEvents() as $event) {
                         $client->replyMessage(array(
                             'replyToken' => $event['replyToken'],
                             'messages' => array(
+                              array(
+                                'type' => 'text',
+                                'text' => 'N個月後'
+                              ),
                                 $rebalance
                                 
                             )
@@ -331,6 +455,14 @@ foreach ($client->parseEvents() as $event) {
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                                 $list
+                         )
+                    )); 
+              }
+              else if($postbackData==='market'){
+                    $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                                $market
                          )
                     )); 
               }
