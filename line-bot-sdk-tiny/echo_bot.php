@@ -154,7 +154,7 @@ $rebalance = array (
     'text' => '您的基金庫存 [復華全方位基金] 所屬市場近期有波動：從悲觀轉向樂觀。',
   ),
 );
-/*$fundinfo=array (
+$fundinfo=array (
   'type' => 'template',
   'altText' => 'this is a buttons template',
   'template' => 
@@ -184,9 +184,9 @@ $rebalance = array (
       ),
     ),
     'title' => '復華全方位基金'
-    'text' => '最新淨值 (2018/8/3)：TWD 33.01\n三個月績效：18.27%\n風險報酬等級：RR4',
+    'text' => '最新淨值 (2018/8/3)：TWD 33.01 三個月績效：18.27% 風險報酬等級：RR4',
   ),
-);*/
+);
 
 
 foreach ($client->parseEvents() as $event) {
@@ -259,7 +259,8 @@ foreach ($client->parseEvents() as $event) {
                                 array(
                                     'type' => 'text',
                                     'text' =>  $event['postback']['data']
-                                )
+                                ),
+                                $fundinfo
                          )
                     )); 
               }      
