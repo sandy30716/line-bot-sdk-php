@@ -202,6 +202,24 @@ foreach ($client->parseEvents() as $event) {
                     break;
             }
             break;
+            case 'postback':
+              if($message['data']=='check'){
+                     $replyMsg = '查看復華基金';
+                    $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $replyMsg
+                            ),
+                           $test
+                          
+                         )
+                    ));                   
+              }
+
+              break;
+
         default:
             error_log("Unsupporeted event type: " . $event['type']);
             break;
