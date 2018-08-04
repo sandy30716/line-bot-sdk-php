@@ -121,7 +121,7 @@ foreach ($client->parseEvents() as $event) {
                 case 'text':
                     $replyMsg = $message['text'];
                     if(strpos($message['text'], '賺錢') !== false){
-                        $replyMsg = '近三月績效排行前三名為...';
+                        $replyMsg = '近三月績效排行前三名為......';
                         $client->replyMessage(array(
                             'replyToken' => $event['replyToken'],
                             'messages' => array(
