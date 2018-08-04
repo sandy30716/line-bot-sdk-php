@@ -166,15 +166,15 @@ $fundinfo=array (
       array (
         'type' => 'postback',
         'label' => '申購/贖回',
-        'text' => '動作 1',
-        'data' => '資料 1',
+        'text' => '申購/贖回',
+        'data' => 'buyOrSell',
       ),
       1 => 
       array (
         'type' => 'postback',
         'label' => '加入觀察清單',
-        'text' => '動作 2',
-        'data' => '資料 2',
+        'text' => '加入觀察清單',
+        'data' => 'list',
       ),
       2 => 
       array (
@@ -238,6 +238,10 @@ $buy=array (
     'title' => '申購復華全方位基金',
     'text' => '請選擇投資方式',
   ),
+);
+$list=array (
+  'type' => 'text',
+  'text' => '已將復華全方位基金加入網銀觀察清單，立即登入網銀申購→https://ebank.esunbank.com.tw/index.jsp',
 );
 
 
@@ -321,7 +325,16 @@ foreach ($client->parseEvents() as $event) {
                                 $buyOrSell
                          )
                     )); 
-              }      
+              }
+              else if($postbackData==='buy' ||$postbackData==='list'){
+                    $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                                $list
+                         )
+                    )); 
+              }
+
               break;
 
         default:
