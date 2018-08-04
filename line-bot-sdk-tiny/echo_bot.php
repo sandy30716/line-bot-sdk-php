@@ -28,7 +28,7 @@ class Fund
     public $value;
     public $code;
     public function __toString ( ){
-      return '淨值'.$value.',近三個月報酬率'.$performance;
+      return '淨值'.$this->value.',近三個月報酬率'.$this->$performance;
 
     }
 }
@@ -429,7 +429,7 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'N個月後'.$fund1.$fund1->name
+                                'text' => 'N個月後'.$fund1.$fund1->name.$random_keys.$randomFund.$randomFund->name
                               ),
                                 $rebalance
                                 
