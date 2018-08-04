@@ -129,7 +129,7 @@ foreach ($client->parseEvents() as $event) {
                                     'type' => 'text',
                                     'text' => $replyMsg
                                 ),
-                                $test;
+                                $test
                                 
                             )
                         ));
