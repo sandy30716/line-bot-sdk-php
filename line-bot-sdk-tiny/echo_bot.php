@@ -183,8 +183,8 @@ $fundinfo=array (
         'uri' => 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wr/wr01.djhtm&query=a=ACFH15-2916',
       ),
     ),
-    'title' => '復華全方位基金'
-    'text' => '最新淨值 (2018/8/3)：TWD 33.01 三個月績效：18.27% 風險報酬等級：RR4',
+    'title' => '復華全方位基金',
+    'text' => '最新淨值 (2018/8/3)：TWD 33.01\n三個月績效：18.27%\n風險報酬等級：RR4',
   ),
 );
 
