@@ -22,14 +22,13 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 class Fund
 {
     public $name;
-    public $performance;
+    public $performance='';
     public $level;
     public $status;
-    public $value;
+    public $value='';
     public $code;
     public function __toString ( ){
-      return '淨值'.$this->value.',近三個月報酬率'.$this->$performance;
-
+      return '近三個月績效：'.$this->performance.',淨值：'.$this->value.',風險等級：'.$this->level;
     }
 }
 
@@ -49,10 +48,9 @@ $fund2->level = 'RR4';
 $fund2->status = '樂觀';
 $fund2->value = 'USD 15.13';
 
-
 $funds = array($fund1,$fund2);
-$random_keys=array_rand($funds,1);
-$randomFund = $funds[$random_keys[0]];
+$random_keys=array_rand($funds);
+$randomFund = $funds[$random_keys];
 
 $test = array (
   'type' => 'template',
