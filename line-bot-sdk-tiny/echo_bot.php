@@ -48,7 +48,7 @@ $fund2->level = 'RR4';
 $fund2->status = '樂觀';
 $fund2->value = 'USD 15.13';
 
-$funds = array($fund1,$fund2);
+$funds = array('2916'=>$fund1,'ar13'=>$fund2);
 $random_keys=array_rand($funds);
 $randomFund = $funds[$random_keys];
 
@@ -160,7 +160,7 @@ $rebalance = array (
         'type' => 'postback',
         'label' => '查看基金現況',
         'text' => '查看基金現況',
-        'data' => 'check',
+        'data' => 'check:'.$randomFund->code,
       ),
       1 => 
       array (
@@ -188,6 +188,42 @@ $rebalance = array (
     'text' => '您的基金庫存 ['.$randomFund->name.'] 所屬市場近期有波動：從悲觀轉向樂觀。',
   ),
 );
+function createFundInfo(Fund $fund){
+  $fundinfo =  array (
+  'type' => 'template',
+  'altText' => 'this is a buttons template',
+  'template' => 
+  array (
+    'type' => 'buttons',
+    'actions' => 
+    array (
+      0 => 
+      array (
+        'type' => 'postback',
+        'label' => '申購/贖回',
+        'text' => '申購/贖回',
+        'data' => 'buyOrSell',
+      ),
+      1 => 
+      array (
+        'type' => 'postback',
+        'label' => '加入觀察清單',
+        'text' => '加入觀察清單',
+        'data' => 'list',
+      ),
+      2 => 
+      array (
+        'type' => 'uri',
+        'label' => '詳細資訊',
+        'uri' => 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wr/wr01.djhtm&query=a=ACFH15-2916',
+      ),
+    ),
+    'title' => $fund->name,
+    'text' => $fund,
+  ),
+);
+  return $fundinfo;
+}
 $fundinfo=array (
   'type' => 'template',
   'altText' => 'this is a buttons template',
@@ -299,14 +335,14 @@ $market=array (
             'type' => 'postback',
             'label' => 'NB美國多元企業機會基金',
             'text' => '查看NB美國多元企業機會基金',
-            'data' => 'check&ar13',
+            'data' => 'check:ar13',
           ),
           1 => 
           array (
             'type' => 'postback',
             'label' => '美國高股息基金X股美元',
             'text' => '查看美國高股息基金X股美元',
-            'data' => 'check&ap24',
+            'data' => 'check:ap24',
           ),
           2 => 
           array (
@@ -368,32 +404,6 @@ $market=array (
           ),
         ),
       ),
-      3 => 
-      array (
-        'title' => '亞洲',
-        'text' => '文字',
-        'actions' => 
-        array (
-          0 => 
-          array (
-            'type' => 'message',
-            'label' => '動作 1',
-            'text' => '動作 1',
-          ),
-          1 => 
-          array (
-            'type' => 'message',
-            'label' => '動作 2',
-            'text' => '動作 2',
-          ),
-          2 => 
-          array (
-            'type' => 'message',
-            'label' => '動作 3',
-            'text' => '動作 3',
-          ),
-        ),
-      ),
     ),
   ),
 );
@@ -427,7 +437,7 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'N個月後QQ'.$fund1.$fund1->name.$randomFund.$randomFund->name
+                                'text' => 'N個月後'
                               ),
                                 $rebalance
                                 
@@ -468,11 +478,17 @@ foreach ($client->parseEvents() as $event) {
                     ));                   
               }*/
               $postbackData=$event['postback']['data'];
-              if($postbackData==='check'){
+              if(strpos($postbackData, 'check') !== false){
+                $pieces = explode(":", $postbackData);
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
-                                $fundinfo
+                            array(
+                                'type' => 'text',
+                                'text' => $pieces[1].$funds[$pieces[1]];
+                            ),
+                                createFundInfo($funds[$pieces[1]])
+                                //$fundinfo
                          )
                     )); 
               }  
