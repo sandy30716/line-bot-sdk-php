@@ -179,7 +179,7 @@ $rebalance = array (
         'type' => 'postback',
         'label' => '申購/贖回',
         'text' => '我要申購/贖回',
-        'data' => 'buyOrSell',
+        'data' => 'buyOrSell:'.$randomFund->code,
       ),
       2 => 
       array (
@@ -192,7 +192,7 @@ $rebalance = array (
       array (
         'type' => 'uri',
         'label' => '看市場分析',
-        'uri' => 'https://www.esunbank.com.tw/event/wealth/epaper/20180730/index.html',
+        'uri' => $randomFund->uri,
       ),
     ),
     'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
@@ -309,16 +309,16 @@ $market=array (
           0 => 
           array (
             'type' => 'postback',
-            'label' => 'NB美國多元企業機會基金',
-            'text' => '查看NB美國多元企業機會基金',
+            'label' => $funds[ar13]->name,
+            'text' => '查看'.$funds[ar13]->name,
             'data' => 'check:ar13',
           ),
           1 => 
           array (
             'type' => 'postback',
-            'label' => '美國高股息基金X股美元',
-            'text' => '查看美國高股息基金X股美元',
-            'data' => 'check:ap24',
+            'label' => $funds[ar13]->name,
+            'text' => '查看'.$funds[ar13]->name,
+            'data' => 'check:ar13',
           ),
           2 => 
           array (
@@ -336,21 +336,23 @@ $market=array (
         array (
           0 => 
           array (
-            'type' => 'message',
-            'label' => '富達拉丁美洲基金',
-            'text' => '動作 1',
+            'type' => 'postback',
+            'label' => $funds[aa41]->name,
+            'text' => '查看'.$funds[aa41]->name,
+            'data' => 'check:aa41',
           ),
           1 => 
           array (
-            'type' => 'message',
-            'label' => '達富拉丁美洲基金',
-            'text' => '動作 2',
+            'type' => 'postback',
+            'label' => $funds[aa41]->name,
+            'text' => '查看'.$funds[aa41]->name,
+            'data' => 'check:aa41',
           ),
           2 => 
           array (
-            'type' => 'message',
-            'label' => '看更多拉丁美洲市場基金',
-            'text' => '動作 3',
+            'type' => 'uri',
+            'label' => '看更多拉美市場基金',
+            'uri' => 'https://www.esunbank.com.tw/event/wealth/fundworld/#LatinAmerica',
           ),
         ),
       ),
@@ -362,21 +364,23 @@ $market=array (
         array (
           0 => 
           array (
-            'type' => 'message',
-            'label' => '富達新興亞洲基金',
-            'text' => '富達新興亞洲基金',
+            'type' => 'postback',
+            'label' => $funds[2916]->name,
+            'text' => '查看'.$funds[2916]->name,
+            'data' => 'check:2916',
           ),
           1 => 
           array (
-            'type' => 'message',
-            'label' => '動作 2',
-            'text' => '動作 2',
+            'type' => 'postback',
+            'label' => $funds[2916]->name,
+            'text' => '查看'.$funds[2916]->name,
+            'data' => 'check:2916',
           ),
           2 => 
           array (
-            'type' => 'message',
-            'label' => '看更多亞洲市場基金',
-            'text' => '看更多亞洲市場基金',
+            'type' => 'uri',
+            'label' => '看更多台灣市場基金',
+            'uri' => 'https://www.esunbank.com.tw/event/wealth/fundworld/#Taiwan',
           ),
         ),
       ),
