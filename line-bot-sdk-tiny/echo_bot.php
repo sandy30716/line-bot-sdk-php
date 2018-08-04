@@ -188,42 +188,6 @@ $rebalance = array (
     'text' => '您的基金庫存 ['.$randomFund->name.'] 所屬市場近期有波動：從悲觀轉向樂觀。',
   ),
 );
-function createFundInfo(Fund $fund){
-  $fundinfo =  array (
-  'type' => 'template',
-  'altText' => 'this is a buttons template',
-  'template' => 
-  array (
-    'type' => 'buttons',
-    'actions' => 
-    array (
-      0 => 
-      array (
-        'type' => 'postback',
-        'label' => '申購/贖回',
-        'text' => '申購/贖回',
-        'data' => 'buyOrSell',
-      ),
-      1 => 
-      array (
-        'type' => 'postback',
-        'label' => '加入觀察清單',
-        'text' => '加入觀察清單',
-        'data' => 'list',
-      ),
-      2 => 
-      array (
-        'type' => 'uri',
-        'label' => '詳細資訊',
-        'uri' => 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wr/wr01.djhtm&query=a=ACFH15-2916',
-      ),
-    ),
-    'title' => $fund->name,
-    'text' => $fund,
-  ),
-);
-  return $fundinfo;
-}
 $fundinfo=array (
   'type' => 'template',
   'altText' => 'this is a buttons template',
@@ -480,15 +444,17 @@ foreach ($client->parseEvents() as $event) {
               $postbackData=$event['postback']['data'];
               if(strpos($postbackData, 'check') !== false){
                 $pieces = explode(":", $postbackData);
+                $fundinfo[template][title]=$funds[$pieces[1]]->name;
+                $fundinfo[template][text]=$funds[$pieces[1]];
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $postbackData.$pieces[1]
+                                'text' => $postbackData.$funds[$pieces[1]];
                             ),
-                                createFundInfo($funds[$pieces[1]])
-                                //$fundinfo
+                                //createFundInfo($funds[$pieces[1]])
+                                $fundinfo
                          )
                     )); 
               }  
