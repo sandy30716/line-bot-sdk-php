@@ -18,23 +18,7 @@ require_once('./LINEBotTiny.php');
 $channelAccessToken = '/lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73Gm76nhKPnhd9tVLwcX/SoTiQ91o+WytapLvkDuXfQz6ZzxAnXLWMlK6OPv1XRmiLj308Hc4yenYjOTFF/As8UF59izRAQdB04t89/1O/w1cDnyilFU=';
 $channelSecret = 'bbd40ae0c329ee4732e0b24c1148a37a';
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-foreach ($client->parseEvents() as $event) {
-    switch ($event['type']) {
-        case 'message':
-            $message = $event['message'];
-            switch ($message['type']) {
-                case 'text':
-                    $replyMsg = $message['text'];
-                    if(strpos($message['text'], '賺錢') !== false){
-                        $replyMsg = '近三月績效排行前三名為...';
-                        $client->replyMessage(array(
-                            'replyToken' => $event['replyToken'],
-                            'messages' => array(
-                                array(
-                                    'type' => 'text',
-                                    'text' => $replyMsg
-                                ),
-                                array (
+$test = array (
   'type' => 'template',
   'altText' => 'this is a carousel template',
   'template' => 
@@ -127,7 +111,26 @@ foreach ($client->parseEvents() as $event) {
       ),
     ),
   ),
-)
+);
+
+foreach ($client->parseEvents() as $event) {
+    switch ($event['type']) {
+        case 'message':
+            $message = $event['message'];
+            switch ($message['type']) {
+                case 'text':
+                    $replyMsg = $message['text'];
+                    if(strpos($message['text'], '賺錢') !== false){
+                        $replyMsg = '近三月績效排行前三名為...';
+                        $client->replyMessage(array(
+                            'replyToken' => $event['replyToken'],
+                            'messages' => array(
+                                array(
+                                    'type' => 'text',
+                                    'text' => $replyMsg
+                                ),
+                                $test;
+                                
                             )
                         ));
                     }
