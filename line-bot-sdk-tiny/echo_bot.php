@@ -113,47 +113,47 @@ $test = array (
   ),
 );
 
-$rebalance = array(
-   'type' => 'template',
-   'altText' => 'this is a buttons template',
-   'template' => 
-  stdClass::__set_state(array(
-     'type' => 'buttons',
-     'actions' => 
+$rebalance = array (
+  'type' => 'template',
+  'altText' => 'this is a buttons template',
+  'template' => 
+  array (
+    'type' => 'buttons',
+    'actions' => 
     array (
       0 => 
-      stdClass::__set_state(array(
-         'type' => 'postback',
-         'label' => '查看基金現況',
-         'text' => '查看基金現況',
-         'data' => 'check',
-      )),
+      array (
+        'type' => 'postback',
+        'label' => '查看基金現況',
+        'text' => '查看基金現況',
+        'data' => 'check',
+      ),
       1 => 
-      stdClass::__set_state(array(
-         'type' => 'postback',
-         'label' => '申購/贖回',
-         'text' => '我要申購/贖回',
-         'data' => 'buyOrSell',
-      )),
+      array (
+        'type' => 'postback',
+        'label' => '申購/贖回',
+        'text' => '我要申購/贖回',
+        'data' => 'buyOrSell',
+      ),
       2 => 
-      stdClass::__set_state(array(
-         'type' => 'postback',
-         'label' => '看其他市場',
-         'text' => '動作 3',
-         'data' => '資料 3',
-      )),
+      array (
+        'type' => 'postback',
+        'label' => '看其他市場',
+        'text' => '動作 3',
+        'data' => '資料 3',
+      ),
       3 => 
-      stdClass::__set_state(array(
-         'type' => 'uri',
-         'label' => '看市場分析',
-         'uri' => 'https://www.esunbank.com.tw/event/wealth/epaper/20180730/index.html',
-      )),
+      array (
+        'type' => 'uri',
+        'label' => '看市場分析',
+        'uri' => 'https://www.esunbank.com.tw/event/wealth/epaper/20180730/index.html',
+      ),
     ),
-     'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
-     'title' => '市場波動通知',
-     'text' => '您的基金庫存 [復華全方位基金] 所屬市場近期有波動：從悲觀轉向樂觀。',
-  )),
-));
+    'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
+    'title' => '市場波動通知',
+    'text' => '您的基金庫存 [復華全方位基金] 所屬市場近期有波動：從悲觀轉向樂觀。',
+  ),
+);
 
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
