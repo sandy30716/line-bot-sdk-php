@@ -48,7 +48,7 @@ $fund2->level = 'RR4';
 $fund2->status = '樂觀';
 $fund2->value = 'USD 15.13';
 
-$funds = array('2916'=>$fund1,'ar13'=>$fund2);
+$funds = array(2916=>$fund1,ar13=>$fund2);
 $random_keys=array_rand($funds);
 $randomFund = $funds[$random_keys];
 
@@ -453,7 +453,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $postbackData
+                                'text' => $postbackData.$pieces[1].$funds[$pieces[1]]
                             ),
                                 //createFundInfo($funds[$pieces[1]])
                                 $fundinfo
