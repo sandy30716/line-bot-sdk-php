@@ -192,7 +192,7 @@ $rebalance = array (
       array (
         'type' => 'uri',
         'label' => '看市場分析',
-        'uri' => $randomFund->uri,
+        'uri' => 'https://www.esunbank.com.tw/event/wealth/epaper/20180730/index.html',
       ),
     ),
     'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
