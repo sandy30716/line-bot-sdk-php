@@ -36,10 +36,10 @@ class Fund
 $fund1 = new Fund();
 $fund1->name = '復華全方位基金';
 $fund1->code = '2916';
-$fund1->performance = '100';
+$fund1->performance = '18.27%';
 $fund1->level = 'RR4';
 $fund1->status = '樂觀';
-$fund1->value = 'TWD 200';
+$fund1->value = 'TWD 33.01';
 $fund1->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wr/wr01.djhtm&query=a=ACFH15-2916';
 
 $fund2 = new Fund();
@@ -49,9 +49,18 @@ $fund2->performance = '6.32%';
 $fund2->level = 'RR4';
 $fund2->status = '樂觀';
 $fund2->value = 'USD 15.13';
-$fund2->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wr/wr01.djhtm&query=a=ACFH15-2916';
+$fund2->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wb/wb01.djhtm&query=a=NBT74-AR13';
 
-$funds = array(2916=>$fund1,ar13=>$fund2);
+$fund3 = new Fund();
+$fund3->name = '富達拉丁美洲基金';
+$fund3->code = 'aa41';
+$fund3->performance = '-8.68%';
+$fund3->level = 'RR5';
+$fund3->status = '樂觀';
+$fund3->value = 'USD 33.19';
+$fund3->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wb/wb01.djhtm&query=a=FTZ07-AA41';
+
+$funds = array(2916=>$fund1,ar13=>$fund2,aa41=>$fund3);
 $random_keys=array_rand($funds);
 $randomFund = $funds[$random_keys];
 
@@ -462,6 +471,8 @@ foreach ($client->parseEvents() as $event) {
                     )); 
               }  
               else if(strpos($postbackData, 'buyOrSell') !== false){
+                    $pieces = explode(":", $postbackData);
+                    $buyOrSell[template][actions][0][data]='buy:'.$pieces[1];
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -470,6 +481,8 @@ foreach ($client->parseEvents() as $event) {
                     )); 
               }
               else if((strpos($postbackData, 'buy') !== false) ||(strpos($postbackData, 'list') !== false)){
+                    $pieces = explode(":", $postbackData);
+                    $list[text]='已將['.$funds[$pieces[1]]->name.']加入網銀觀察清單，立即登入網銀申購→https://ebank.esunbank.com.tw/index.jsp';
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
