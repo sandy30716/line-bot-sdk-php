@@ -18,6 +18,42 @@ require_once('./LINEBotTiny.php');
 $channelAccessToken = '/lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73Gm76nhKPnhd9tVLwcX/SoTiQ91o+WytapLvkDuXfQz6ZzxAnXLWMlK6OPv1XRmiLj308Hc4yenYjOTFF/As8UF59izRAQdB04t89/1O/w1cDnyilFU=';
 $channelSecret = 'bbd40ae0c329ee4732e0b24c1148a37a';
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
+
+class Fund
+{
+    public $name;
+    public $performance;
+    public $level;
+    public $status;
+    public $value;
+    public $code;
+    public string __toString ( void ){
+      return '淨值'.$value.',近三個月報酬率'.$performance;
+
+    }
+}
+
+$fund1 = new Fund();
+$fund1->name = '復華全方位基金';
+$fund1->code = '2916';
+$fund1->performance = '100';
+$fund1->level = 'RR4';
+$fund1->status = '樂觀';
+$fund1->value = 'TWD 200';
+
+$fund2 = new Fund();
+$fund2->name = 'NB美國多元企業機會基金';
+$fund2->code = 'ar13';
+$fund2->performance = '6.32%';
+$fund2->level = 'RR4';
+$fund2->status = '樂觀';
+$fund2->value = 'USD 15.13';
+
+
+$funds = array($fund1,$fund2);
+$random_keys=array_rand($funds,1);
+$randomFund = $funds[$random_keys[0]];
+
 $test = array (
   'type' => 'template',
   'altText' => 'this is a carousel template',
@@ -151,7 +187,7 @@ $rebalance = array (
     ),
     'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
     'title' => '市場波動通知',
-    'text' => '您的基金庫存 [復華全方位基金] 所屬市場近期有波動：從悲觀轉向樂觀。',
+    'text' => '您的基金庫存 ['.$randomFund.'] 所屬市場近期有波動：從悲觀轉向樂觀。',
   ),
 );
 $fundinfo=array (
