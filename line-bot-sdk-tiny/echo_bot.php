@@ -487,8 +487,8 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'text',
                                 'text' => $postbackData.$pieces[1]
                             ),
-                                //createFundInfo($funds[$pieces[1]])
-                                $fundinfo
+                                createFundInfo($funds[$pieces[1]])
+                                //$fundinfo
                          )
                     )); 
               }  
