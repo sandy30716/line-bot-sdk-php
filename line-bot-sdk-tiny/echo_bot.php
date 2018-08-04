@@ -184,9 +184,62 @@ $fundinfo=array (
       ),
     ),
     'title' => '復華全方位基金',
-    'text' => '最新淨值 (2018/8/3)：TWD 33.01\n三個月績效：18.27% %0D%0A 風險報酬等級：RR4',
+    'text' => '最新淨值 (2018/8/3)：TWD 33.01 三個月績效：18.27% 風險報酬等級：RR4',
   ),
 );
+$buyOrSell=array (
+  'type' => 'template',
+  'altText' => 'this is a confirm template',
+  'template' => 
+  array (
+    'type' => 'confirm',
+    'actions' => 
+    array (
+      0 => 
+      array (
+        'type' => 'postback',
+        'label' => '申購',
+        'text' => '我要申購',
+        'data' => 'buy',
+      ),
+      1 => 
+      array (
+        'type' => 'uri',
+        'label' => '贖回',
+        'uri' => 'https://ebank.esunbank.com.tw/index.jsp',
+      ),
+    ),
+    'text' => '您要申購或贖回？',
+  ),
+);
+$buy=array (
+  'type' => 'template',
+  'altText' => 'this is a buttons template',
+  'template' => 
+  array (
+    'type' => 'buttons',
+    'actions' => 
+    array (
+      0 => 
+      array (
+        'type' => 'postback',
+        'label' => '定期定額',
+        'text' => '定期定額',
+        'data' => 'buy1',
+      ),
+      1 => 
+      array (
+        'type' => 'postback',
+        'label' => '單筆申購',
+        'text' => '單筆申購',
+        'data' => 'buy2',
+      ),
+    ),
+    'title' => '申購復華全方位基金',
+    'text' => '請選擇投資方式',
+  ),
+);
+
 
 
 foreach ($client->parseEvents() as $event) {
@@ -252,15 +305,20 @@ foreach ($client->parseEvents() as $event) {
                          )
                     ));                   
               }*/
-              if($event['postback']['data']==='check'){
+              $postbackData=$event['postback']['data'];
+              if($postbackData==='check'){
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
-                                array(
-                                    'type' => 'text',
-                                    'text' =>  $event['postback']['data']
-                                ),
                                 $fundinfo
+                         )
+                    )); 
+              }  
+              else if($postbackData==='buyOrSell'){
+                    $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                                $buyOrSell
                          )
                     )); 
               }      
