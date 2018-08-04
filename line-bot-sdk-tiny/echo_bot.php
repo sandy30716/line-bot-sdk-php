@@ -203,7 +203,8 @@ foreach ($client->parseEvents() as $event) {
             }
             break;
             case 'postback':
-              if($message['data']=='check'){
+              //$message = $event['postback.data'];
+              /*if($message['data']=='check'){
                      $replyMsg = '查看復華基金';
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -216,7 +217,18 @@ foreach ($client->parseEvents() as $event) {
                           
                          )
                     ));                   
-              }
+              }*/
+                    $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $event['postback.data']
+                            ),
+                           $test
+                          
+                         )
+                    )); 
 
               break;
 
