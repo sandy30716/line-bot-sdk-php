@@ -429,7 +429,7 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'N個月後'.$fund1.$fund1->name.$random_keys.$randomFund.$randomFund->name
+                                'text' => 'N個月後QQ'.$fund1.$fund1->name.$randomFund.$randomFund->name
                               ),
                                 $rebalance
                                 
