@@ -444,14 +444,16 @@ foreach ($client->parseEvents() as $event) {
               $postbackData=$event['postback']['data'];
               if(strpos($postbackData, 'check') !== false){
                 $pieces = explode(":", $postbackData);
-                $fundinfo[template][title]=$funds[$pieces[1]]->name;
-                $fundinfo[template][text]=$funds[$pieces[1]];
+                //$fundinfo[template][title]=$funds[$pieces[1]]->name;
+                //$fundinfo[template][text]=$funds[$pieces[1]];
+                $fundinfo[template][title]='QQ';
+                $fundinfo[template][text]='QQQ';
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $postbackData.$funds[$pieces[1]]
+                                'text' => $postbackData
                             ),
                                 //createFundInfo($funds[$pieces[1]])
                                 $fundinfo
