@@ -27,7 +27,7 @@ class Fund
     public $status;
     public $value;
     public $code;
-    public string __toString ( void ){
+    public function __toString ( ){
       return '淨值'.$value.',近三個月報酬率'.$performance;
 
     }
