@@ -27,6 +27,7 @@ class Fund
     public $status;
     public $value='';
     public $code;
+    public $uri;
     public function __toString ( ){
       return '近三個月績效：'.$this->performance.',淨值：'.$this->value.',風險等級：'.$this->level;
     }
@@ -39,6 +40,7 @@ $fund1->performance = '100';
 $fund1->level = 'RR4';
 $fund1->status = '樂觀';
 $fund1->value = 'TWD 200';
+$fund1->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wr/wr01.djhtm&query=a=ACFH15-2916';
 
 $fund2 = new Fund();
 $fund2->name = 'NB美國多元企業機會基金';
@@ -47,6 +49,7 @@ $fund2->performance = '6.32%';
 $fund2->level = 'RR4';
 $fund2->status = '樂觀';
 $fund2->value = 'USD 15.13';
+$fund2->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wr/wr01.djhtm&query=a=ACFH15-2916';
 
 $funds = array(2916=>$fund1,ar13=>$fund2);
 $random_keys=array_rand($funds);
@@ -448,19 +451,17 @@ foreach ($client->parseEvents() as $event) {
                 //$fundinfo[template][text]=$funds[$pieces[1]];
                 $fundinfo[template][title]=(string)$funds[$pieces[1]]->name;
                 $fundinfo[template][text]=(string)$funds[$pieces[1]];
+                $fundinfo[template][actions][0][data]=(string)'buyOrSell'.$pieces[1]];
+                $fundinfo[template][actions][1][data]=(string)'list:'.$pieces[1];
+                $fundinfo[template][actions][2][uri]=(string)$funds[$pieces[1]]->uri;
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $postbackData.$pieces[1].$funds[$pieces[1]]
-                            ),
-                                //createFundInfo($funds[$pieces[1]])
                                 $fundinfo
                          )
                     )); 
               }  
-              else if($postbackData==='buyOrSell'){
+              else if(strpos($postbackData, 'buyOrSell') !== false){
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -468,7 +469,7 @@ foreach ($client->parseEvents() as $event) {
                          )
                     )); 
               }
-              else if($postbackData==='buy' ||$postbackData==='list'){
+              else if((strpos($postbackData, 'buy') !== false) ||(strpos($postbackData, 'list') !== false))){
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
