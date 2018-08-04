@@ -223,7 +223,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => 'hihi'.$event['type'].$event.$event['replyToken']
+                                'text' => $event['postback']['data']
                             )
                           
                          )
