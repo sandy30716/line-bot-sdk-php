@@ -460,8 +460,9 @@ foreach ($client->parseEvents() as $event) {
                 //$fundinfo[template][text]=$funds[$pieces[1]];
                 $fundinfo[template][title]=(string)$funds[$pieces[1]]->name;
                 $fundinfo[template][text]=(string)$funds[$pieces[1]];
-                $fundinfo[template][actions][0][data]='buyOrSell:'.$pieces[1];
-                $fundinfo[template][actions][1][data]='list:'.$pieces[1];
+                $code = (string)$pieces[1];
+                $fundinfo[template][actions][0][data]='buyOrSell:'.$code;
+                $fundinfo[template][actions][1][data]='list:'.$code;
                 $fundinfo[template][actions][2][uri]=(string)$funds[$pieces[1]]->uri;
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
