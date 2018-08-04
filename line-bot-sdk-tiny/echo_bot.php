@@ -476,6 +476,10 @@ foreach ($client->parseEvents() as $event) {
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $postbackData
+                            ),
                                 $buyOrSell
                          )
                     )); 
@@ -486,6 +490,10 @@ foreach ($client->parseEvents() as $event) {
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $postbackData
+                            ),
                                 $list
                          )
                     )); 
