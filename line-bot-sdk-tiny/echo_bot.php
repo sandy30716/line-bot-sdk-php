@@ -180,7 +180,7 @@ foreach ($client->parseEvents() as $event) {
                         $client->replyMessage(array(
                             'replyToken' => $event['replyToken'],
                             'messages' => array(
-                                $rebalances
+                                $rebalance
                                 
                             )
                         ));
