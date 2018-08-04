@@ -446,8 +446,8 @@ foreach ($client->parseEvents() as $event) {
                 $pieces = explode(":", $postbackData);
                 //$fundinfo[template][title]=$funds[$pieces[1]]->name;
                 //$fundinfo[template][text]=$funds[$pieces[1]];
-                $fundinfo[template][title]='QQ';
-                $fundinfo[template][text]='QQQ';
+                $fundinfo[template][title]=$funds[$pieces[1]]->name;
+                $fundinfo[template][text]=$funds[$pieces[1]];
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
