@@ -154,6 +154,40 @@ $rebalance = array (
     'text' => '您的基金庫存 [復華全方位基金] 所屬市場近期有波動：從悲觀轉向樂觀。',
   ),
 );
+$fundinfo=array (
+  'type' => 'template',
+  'altText' => 'this is a buttons template',
+  'template' => 
+  array (
+    'type' => 'buttons',
+    'actions' => 
+    array (
+      0 => 
+      array (
+        'type' => 'postback',
+        'label' => '申購/贖回',
+        'text' => '動作 1',
+        'data' => '資料 1',
+      ),
+      1 => 
+      array (
+        'type' => 'postback',
+        'label' => '加入觀察清單',
+        'text' => '動作 2',
+        'data' => '資料 2',
+      ),
+      2 => 
+      array (
+        'type' => 'uri',
+        'label' => '詳細資訊',
+        'uri' => 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wr/wr01.djhtm&query=a=ACFH15-2916',
+      ),
+    ),
+    'title' => '復華全方位基金'
+    'text' => '最新淨值 (2018/8/3)：TWD 33.01\n三個月績效：18.27%\n風險報酬等級：RR4',
+  ),
+);
+
 
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
@@ -218,17 +252,18 @@ foreach ($client->parseEvents() as $event) {
                          )
                     ));                   
               }*/
+              if($event['postback']['data']=='check'){
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $event['postback']['data']
+                                'text' => $fundinfo
                             )
                           
                          )
                     )); 
-
+              }      
               break;
 
         default:
