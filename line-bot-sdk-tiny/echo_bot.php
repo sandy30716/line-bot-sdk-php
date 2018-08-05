@@ -88,7 +88,25 @@ $fund4->status = '樂觀';
 $fund4->value = 'USD 8.2';
 $fund4->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wb/wb01.djhtm&query=a=FLZB8-KK41';
 
-$funds = array(2916=>$fund1,ar13=>$fund2,aa41=>$fund3,kk41=>$fund4);
+$fund5 = new Fund();
+$fund5->name = '貝萊德世界礦業基金';
+$fund5->code = 'ag25';
+$fund5->performance = '-6.34%';
+$fund5->level = 'RR4';
+$fund5->status = '樂觀';
+$fund5->value = 'USD 37.7';
+$fund5->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wb/wb01.djhtm&query=a=SHZ19-AG25';
+
+$fund6 = new Fund();
+$fund6->name = '安聯收益成長基金';
+$fund6->code = 'bb39';
+$fund6->performance = '3.31%';
+$fund6->level = 'RR3';
+$fund6->status = '樂觀';
+$fund6->value = 'USD 9.09';
+$fund6->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wb/wb01.djhtm&query=a=TLZ64-BB39';
+
+$funds = array(2916=>$fund1,ar13=>$fund2,aa41=>$fund3,kk41=>$fund4,ag25=>$fund5,bb39=>$fund6);
 $random_keys=array_rand($funds);
 $randomFund = $funds[$random_keys];
 
@@ -518,53 +536,55 @@ $popularRank1=array (
       ),
       1 => 
       array (
-        'title' => '標題',
-        'text' => '文字',
+        'title' => (string)$fund5->name,
+        'text' => (string)$fund5,
         'actions' => 
         array (
           0 => 
           array (
-            'type' => 'message',
-            'label' => '動作 1',
-            'text' => '動作 1',
+            'type' => 'postback',
+            'label' => '加入觀察清單',
+            'text' => '加入觀察清單',
+            'data' => 'list:'.$fund5->code,
           ),
           1 => 
           array (
-            'type' => 'message',
-            'label' => '動作 2',
-            'text' => '動作 2',
+            'type' => 'uri',
+            'label' => '詳細資訊',
+            'uri' => (string)$fund5->uri,
           ),
           2 => 
           array (
-            'type' => 'message',
-            'label' => '動作 3',
-            'text' => '動作 3',
+            'type' => 'uri',
+            'label' => '看更多人氣基金',
+            'uri' => 'https://www.esunbank.com.tw/event/wealth/popularrank/index.html',
           ),
         ),
       ),
       2 => 
       array (
-        'title' => '標題',
-        'text' => '文字',
+        'title' => (string)$fund6->name,
+        'text' => (string)$fund6,
         'actions' => 
         array (
           0 => 
           array (
-            'type' => 'message',
-            'label' => '動作 1',
-            'text' => '動作 1',
+            'type' => 'postback',
+            'label' => '加入觀察清單',
+            'text' => '加入觀察清單',
+            'data' => 'list:'.$fund6->code,
           ),
           1 => 
           array (
-            'type' => 'message',
-            'label' => '動作 2',
-            'text' => '動作 2',
+            'type' => 'uri',
+            'label' => '詳細資訊',
+            'uri' => (string)$fund6->uri,
           ),
           2 => 
           array (
-            'type' => 'message',
-            'label' => '動作 3',
-            'text' => '動作 3',
+            'type' => 'uri',
+            'label' => '看更多人氣基金',
+            'uri' => 'https://www.esunbank.com.tw/event/wealth/popularrank/index.html',
           ),
         ),
       ),
@@ -612,7 +632,7 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => '~~~~人氣基金~~~~~'.emoticon('100077')
+                                'text' => '~~~~人氣基金~~~~'.emoticon('100077')
                               ),
                               $rank
                                 
@@ -625,8 +645,46 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => '你較勇於嘗試新觀念新方法新事物'
-                                //也願意利用風險較高或是新推出的金融商品作為投資工具，來獲取較高的報酬。'
+                                'text' => '你較勇於嘗試新觀念新方法新事物，也願意利用風險較高或是新推出的金融商品作為投資工具，來獲取較高的報酬，屬於行為積極的理財投資者，具有較高的投資風險容忍度。儘管金融投資工具擁有高報酬、高風險的特性，但高風險卻不保證必然可獲得較高的投資報酬。建議在選擇理財投資工具時，除了高報酬率之外，也應該注意其風險高低，以免過於樂觀而忽略了所隱含的風險。以下人氣基金適合積極型的你：'
+                              ),
+                              $popularRank1
+                                
+                            )
+                        ));
+                    }
+                    else if(strpos($message['text'], '成長型') !== false){
+                        $client->replyMessage(array(
+                            'replyToken' => $event['replyToken'],
+                            'messages' => array(
+                              array(
+                                'type' => 'text',
+                                'text' => '你願意承受部分風險，追求資產能有成長的機會，個性較為積極主動，生活中願意嘗試新鮮的事物，對理財相關的產品接受度較高，在資產配置中可將共同基金列為資產成長主力，但也別忘了應保持持有部分的流動資金及定存，使資產在穩定中成長。以下人氣基金適合成長型的你：'
+                              ),
+                              $popularRank1
+                                
+                            )
+                        ));
+                    }
+                    else if(strpos($message['text'], '穩健型') !== false){
+                        $client->replyMessage(array(
+                            'replyToken' => $event['replyToken'],
+                            'messages' => array(
+                              array(
+                                'type' => 'text',
+                                'text' => '你願意承受稍高的風險，以獲取較高的報酬，但每當作一個決策時，必定會慎重評估其可能隱含的損失風險，風險承受度適中。建議可以多吸收各種投資理財或新金融商品的相關知識，以利在不同的經濟景氣循環下選擇適當的金融投資工具，達成理財目標。以下人氣基金適合穩健型的你：'
+                              ),
+                              $popularRank1
+                                
+                            )
+                        ));
+                    }
+                    else if(strpos($message['text'], '保守型') !== false){
+                        $client->replyMessage(array(
+                            'replyToken' => $event['replyToken'],
+                            'messages' => array(
+                              array(
+                                'type' => 'text',
+                                'text' => '你個性較穩重，期待投資能夠盡量保本並有穩定的回報，不輕易嘗試波動較大的金融投資工具，其實對金融投資工具而言，高報酬、高風險雖然是一體的兩面，但只要仔細瞭解不同金融投資商品的特質並規劃得當，納入一些相對風險較低的金融投資工具，將更能完成各項理財規劃。以下人氣基金適合保守型的你：'
                               ),
                               $popularRank1
                                 
