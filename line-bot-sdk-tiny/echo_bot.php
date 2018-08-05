@@ -215,8 +215,8 @@ $rebalance = array (
       ),
     ),
     'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
-    'title' => emoticon('100078').'市場波動通知',
-    'text' => emoticon('100078').'您的基金庫存 ['.$randomFund->name.'] 所屬市場近期有波動：從悲觀轉向樂觀。',
+    'title' => '市場波動通知',
+    'text' => '您的基金庫存 ['.$randomFund->name.'] 所屬市場近期有波動：從悲觀轉向樂觀。',
   ),
 );
 $fundinfo=array (
@@ -306,7 +306,7 @@ $buy=array (
 );
 $list=array (
   'type' => 'text',
-  'text' => '已將復華全方位基金加入網銀觀察清單，立即登入網銀申購→https://ebank.esunbank.com.tw/index.jsp',
+  'text' => '已將復華全方位基金加入網銀觀察清單，立即登入網銀申購'.emoticon('100050').'→https://ebank.esunbank.com.tw/index.jsp',
 );
 $market=array (
   'type' => 'template',
@@ -322,7 +322,7 @@ $market=array (
       0 => 
       array (
         'title' => '北美',
-        'text' => '相對樂觀^_^'.emoticon('1000A9'),
+        'text' => '相對樂觀^_^',
         'actions' => 
         array (
           0 => 
@@ -436,7 +436,7 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'N個月後'.emoticon('100078')
+                                'text' => 'N個月後'.emoticon('100077')
                               ),
                               $rebalance
                                 
