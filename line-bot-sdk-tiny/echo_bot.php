@@ -19,6 +19,16 @@ $channelAccessToken = '/lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73
 $channelSecret = 'bbd40ae0c329ee4732e0b24c1148a37a';
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
+$code = '100078';
+// 16進エンコードされたバイナリ文字列をデコード
+$bin = hex2bin(str_repeat('0', 8 - strlen($code)) . $code);
+// UTF8へエンコード
+$emoticon =  mb_convert_encoding($bin, 'UTF-8', 'UTF-32BE');
+
+//配列などに格納して使う
+//$text[] =  array("type" => "text","text" => $emoticon);
+
+
 class Fund
 {
     public $name;
@@ -417,7 +427,8 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => '\uDBC0\uDC84 N個月後'
+                                'text' => $emoticon
+                                //'\uDBC0\uDC84 N個月後'
                               ),
                                 $rebalance
                                 
