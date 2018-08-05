@@ -79,7 +79,16 @@ $fund3->status = '樂觀';
 $fund3->value = 'USD 33.19';
 $fund3->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wb/wb01.djhtm&query=a=FTZ07-AA41';
 
-$funds = array(2916=>$fund1,ar13=>$fund2,aa41=>$fund3);
+$fund4 = new Fund();
+$fund4->name = '富蘭克林坦伯頓全球投資系列新興國家固定收益基金';
+$fund4->code = 'kk41';
+$fund4->performance = '-3.68%';
+$fund4->level = 'RR3';
+$fund4->status = '樂觀';
+$fund4->value = 'USD 8.2';
+$fund4->uri = 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wb/wb01.djhtm&query=a=FLZB8-KK41';
+
+$funds = array(2916=>$fund1,ar13=>$fund2,aa41=>$fund3,kk41=>$fund4);
 $random_keys=array_rand($funds);
 $randomFund = $funds[$random_keys];
 
@@ -469,6 +478,99 @@ $rank=array (
   ),
 );
 
+$popularRank1=array (
+  'type' => 'template',
+  'altText' => 'this is a carousel template',
+  'template' => 
+  array (
+    'type' => 'carousel',
+    'actions' => 
+    array (
+    ),
+    'columns' => 
+    array (
+      0 => 
+      array (
+        'title' => $fund4->name,
+        'text' => $fund4,
+        'actions' => 
+        array (
+          0 => 
+          array (
+            'type' => 'postback',
+            'label' => '加入觀察清單',
+            'text' => '加入觀察清單',
+            'data' => 'list:'.$fund4->code,
+          ),
+          1 => 
+          array (
+            'type' => 'uri',
+            'label' => '詳細資訊',
+            'uri' => $fund4->uri,
+          ),
+          2 => 
+          array (
+            'type' => 'uri',
+            'label' => '看更多人氣基金',
+            'uri' => 'https://www.esunbank.com.tw/event/wealth/popularrank/index.html',
+          ),
+        ),
+      ),
+      1 => 
+      array (
+        'title' => '標題',
+        'text' => '文字',
+        'actions' => 
+        array (
+          0 => 
+          array (
+            'type' => 'message',
+            'label' => '動作 1',
+            'text' => '動作 1',
+          ),
+          1 => 
+          array (
+            'type' => 'message',
+            'label' => '動作 2',
+            'text' => '動作 2',
+          ),
+          2 => 
+          array (
+            'type' => 'message',
+            'label' => '動作 3',
+            'text' => '動作 3',
+          ),
+        ),
+      ),
+      2 => 
+      array (
+        'title' => '標題',
+        'text' => '文字',
+        'actions' => 
+        array (
+          0 => 
+          array (
+            'type' => 'message',
+            'label' => '動作 1',
+            'text' => '動作 1',
+          ),
+          1 => 
+          array (
+            'type' => 'message',
+            'label' => '動作 2',
+            'text' => '動作 2',
+          ),
+          2 => 
+          array (
+            'type' => 'message',
+            'label' => '動作 3',
+            'text' => '動作 3',
+          ),
+        ),
+      ),
+    ),
+  ),
+)
 
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
@@ -491,7 +593,7 @@ foreach ($client->parseEvents() as $event) {
                             )
                         ));
                     }
-                    if(strpos($message['text'], '1313') !== false){
+                    else if(strpos($message['text'], '1313') !== false){
                         $client->replyMessage(array(
                             'replyToken' => $event['replyToken'],
                             'messages' => array(
@@ -504,7 +606,7 @@ foreach ($client->parseEvents() as $event) {
                             )
                         ));
                     }
-                    if(strpos($message['text'], 'hi') !== false){
+                    else if(strpos($message['text'], 'hi') !== false){
                         $client->replyMessage(array(
                             'replyToken' => $event['replyToken'],
                             'messages' => array(
@@ -513,6 +615,19 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => '~~~~人氣基金~~~~~'.emoticon('100077')
                               ),
                               $rank
+                                
+                            )
+                        ));
+                    }
+                    else if(strpos($message['text'], '積極型') !== false){
+                        $client->replyMessage(array(
+                            'replyToken' => $event['replyToken'],
+                            'messages' => array(
+                              array(
+                                'type' => 'text',
+                                'text' => emoticon('100077').'你較勇於嘗試新觀念新方法新事物，也願意利用風險較高或是新推出的金融商品作為投資工具，來獲取較高的報酬。'
+                              )//,
+                              //$rank
                                 
                             )
                         ));
