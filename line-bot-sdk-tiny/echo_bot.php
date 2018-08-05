@@ -417,7 +417,7 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'N個月後'
+                                'text' => '\uDBC0 N個月後'
                               ),
                                 $rebalance
                                 
