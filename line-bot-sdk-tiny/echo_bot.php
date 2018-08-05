@@ -19,6 +19,15 @@ $channelAccessToken = '/lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73
 $channelSecret = 'bbd40ae0c329ee4732e0b24c1148a37a';
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
+function emoticon($code){
+  $bin = hex2bin(str_repeat('0', 8 - strlen($code)) . $code);
+  // UTF8へエンコード
+  $emoticon =  mb_convert_encoding($bin, 'UTF-8', 'UTF-32BE');  
+  return $emoticon;
+
+}
+
+
 $code = '100078';
 // 16進エンコードされたバイナリ文字列をデコード
 $bin = hex2bin(str_repeat('0', 8 - strlen($code)) . $code);
@@ -415,19 +424,7 @@ foreach ($client->parseEvents() as $event) {
                                 array(
                                     'type' => 'text',
                                     'text' => $replyMsg
-                                )//,
-                                //$test
-                                
-                            )
-                        ));
-                        sleep(3);
-                        $client->replyMessage(array(
-                            'replyToken' => $event['replyToken'],
-                            'messages' => array(
-                                /*array(
-                                    'type' => 'text',
-                                    'text' => $replyMsg
-                                ),*/
+                                ),
                                 $test
                                 
                             )
@@ -439,10 +436,9 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => $emoticon.'N個月後'
-                                //'\uDBC0\uDC84 N個月後'
+                                'text' => $emoticon.'N個月後'.emoticon('100078');
                               ),
-                                $rebalance
+                              $rebalance
                                 
                             )
                         ));
