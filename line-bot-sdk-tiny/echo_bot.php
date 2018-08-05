@@ -570,7 +570,7 @@ $popularRank1=array (
       ),
     ),
   ),
-)
+);
 
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
