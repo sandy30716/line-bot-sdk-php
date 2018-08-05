@@ -436,7 +436,7 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => $emoticon.'N個月後'.emoticon('100078');
+                                'text' => $emoticon.'N個月後'.emoticon('100078')
                               ),
                               $rebalance
                                 
