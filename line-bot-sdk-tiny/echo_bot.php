@@ -628,7 +628,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => '你較勇於嘗試新觀念新方法新事物'
                                 //也願意利用風險較高或是新推出的金融商品作為投資工具，來獲取較高的報酬。'
                               ),
-                              $rank
+                              $popularRank1
                                 
                             )
                         ));
