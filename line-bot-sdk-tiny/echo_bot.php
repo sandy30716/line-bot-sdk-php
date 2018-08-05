@@ -409,7 +409,7 @@ $market=array (
 
 $rank=array (
   'type' => 'imagemap',
-  'baseUrl' => 'PROVIDE_URL_FROM_YOUR_SERVER',
+  'baseUrl' => 'https://i.imgur.com/o93Cxvd.png?_ignored=',
   'altText' => 'This is an imagemap',
   'baseSize' => 
   array (
