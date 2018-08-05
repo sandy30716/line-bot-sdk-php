@@ -491,8 +491,8 @@ $popularRank1=array (
     array (
       0 => 
       array (
-        'title' => $fund4->name,
-        'text' => $fund4,
+        'title' => (string)$fund4->name,
+        'text' => (string)$fund4,
         'actions' => 
         array (
           0 => 
@@ -506,7 +506,7 @@ $popularRank1=array (
           array (
             'type' => 'uri',
             'label' => '詳細資訊',
-            'uri' => $fund4->uri,
+            'uri' => (string)$fund4->uri,
           ),
           2 => 
           array (
