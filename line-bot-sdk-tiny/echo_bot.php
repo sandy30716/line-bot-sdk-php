@@ -415,7 +415,18 @@ foreach ($client->parseEvents() as $event) {
                                 array(
                                     'type' => 'text',
                                     'text' => $replyMsg
-                                ),
+                                )//,
+                                //$test
+                                
+                            )
+                        ));
+                        $client->replyMessage(array(
+                            'replyToken' => $event['replyToken'],
+                            'messages' => array(
+                                /*array(
+                                    'type' => 'text',
+                                    'text' => $replyMsg
+                                ),*/
                                 $test
                                 
                             )
