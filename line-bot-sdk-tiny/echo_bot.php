@@ -407,6 +407,67 @@ $market=array (
   ),
 );
 
+$rank=array (
+  'type' => 'imagemap',
+  'baseUrl' => 'PROVIDE_URL_FROM_YOUR_SERVER',
+  'altText' => 'This is an imagemap',
+  'baseSize' => 
+  array (
+    'width' => 1040,
+    'height' => 276,
+  ),
+  'actions' => 
+  array (
+    0 => 
+    array (
+      'type' => 'message',
+      'area' => 
+      array (
+        'x' => 17,
+        'y' => 76,
+        'width' => 268,
+        'height' => 184,
+      ),
+      'text' => '我是積極型',
+    ),
+    1 => 
+    array (
+      'type' => 'message',
+      'area' => 
+      array (
+        'x' => 290,
+        'y' => 78,
+        'width' => 240,
+        'height' => 181,
+      ),
+      'text' => '我是成長型',
+    ),
+    2 => 
+    array (
+      'type' => 'message',
+      'area' => 
+      array (
+        'x' => 542,
+        'y' => 81,
+        'width' => 259,
+        'height' => 175,
+      ),
+      'text' => '我是穩健型',
+    ),
+    3 => 
+    array (
+      'type' => 'message',
+      'area' => 
+      array (
+        'x' => 810,
+        'y' => 81,
+        'width' => 226,
+        'height' => 175,
+      ),
+      'text' => '我是保守型',
+    ),
+  ),
+);
 
 
 foreach ($client->parseEvents() as $event) {
@@ -439,6 +500,19 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => 'N個月後'.emoticon('100077')
                               ),
                               $rebalance
+                                
+                            )
+                        ));
+                    }
+                    if(strpos($message['text'], 'hi') !== false){
+                        $client->replyMessage(array(
+                            'replyToken' => $event['replyToken'],
+                            'messages' => array(
+                              array(
+                                'type' => 'text',
+                                'text' => '~~~~人氣基金~~~~~'.emoticon('100077')
+                              ),
+                              $rank
                                 
                             )
                         ));
