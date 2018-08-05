@@ -215,8 +215,8 @@ $rebalance = array (
       ),
     ),
     'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
-    'title' => emoticon('100035').'市場波動通知',
-    'text' => '您的基金庫存 ['.$randomFund->name.'] 所屬市場近期有波動：從悲觀轉向樂觀。',
+    'title' => emoticon('100078').'市場波動通知',
+    'text' => emoticon('100078').'您的基金庫存 ['.$randomFund->name.'] 所屬市場近期有波動：從悲觀轉向樂觀。',
   ),
 );
 $fundinfo=array (
@@ -436,7 +436,7 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => $emoticon.'N個月後'.emoticon('100078')
+                                'text' => 'N個月後'.emoticon('100078')
                               ),
                               $rebalance
                                 
