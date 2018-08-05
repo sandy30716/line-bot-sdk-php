@@ -420,6 +420,7 @@ foreach ($client->parseEvents() as $event) {
                                 
                             )
                         ));
+                        sleep(3);
                         $client->replyMessage(array(
                             'replyToken' => $event['replyToken'],
                             'messages' => array(
