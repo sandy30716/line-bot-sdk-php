@@ -236,9 +236,10 @@ $rebalance = array (
       ),
       3 => 
       array (
-        'type' => 'uri',
-        'label' => '看市場分析',
-        'uri' => 'https://www.esunbank.com.tw/event/wealth/epaper/20180730/index.html',
+        'type' => 'postback',
+        'label' => '看熱門基金',
+        'text' => '看熱門基金',
+        'data' => 'rank',
       ),
     ),
     'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
@@ -278,9 +279,10 @@ $redemption = array (
       ),
       3 => 
       array (
-        'type' => 'uri',
-        'label' => '看市場分析',
-        'uri' => 'https://www.esunbank.com.tw/event/wealth/epaper/20180730/index.html',
+        'type' => 'postback',
+        'label' => '看熱門基金',
+        'text' => '看熱門基金',
+        'data' => 'rank',
       ),
     ),
     'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
@@ -319,7 +321,6 @@ $takeProfit = array (
         'data' => 'market',
       ),
       3 => 
-      array (
       array (
         'type' => 'postback',
         'label' => '看熱門基金',
