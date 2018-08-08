@@ -932,7 +932,7 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                                 array(
                                     'type' => 'text',
-                                    'text' => $replyMsg.$displayName
+                                    'text' => $replyMsg.$userName
                                 )
                                 
                             )
