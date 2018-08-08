@@ -207,7 +207,7 @@ $test = array (
 
 $rebalance = array (
   'type' => 'template',
-  'altText' => 'this is a buttons template',
+  'altText' => '市場波動通知',
   'template' => 
   array (
     'type' => 'buttons',
@@ -250,7 +250,7 @@ $rebalance = array (
 
 $redemption = array (
   'type' => 'template',
-  'altText' => 'this is a buttons template',
+  'altText' => '贖回入帳通知',
   'template' => 
   array (
     'type' => 'buttons',
@@ -285,7 +285,7 @@ $redemption = array (
         'data' => 'rank',
       ),
     ),
-    'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
+    'thumbnailImageUrl' => 'https://geneonline.news/wp-content/uploads/2015/10/fund.jpg',
     'title' => '贖回入帳通知',
     'text' => '您的贖回的基金 ['.$randomFund->name.'] 贖回款 131,313 元已入帳至您的帳戶 13131313131313。',
   ),
@@ -293,7 +293,7 @@ $redemption = array (
 
 $takeProfit = array (
   'type' => 'template',
-  'altText' => 'this is a buttons template',
+  'altText' => '基金停利通知',
   'template' => 
   array (
     'type' => 'buttons',
@@ -328,8 +328,8 @@ $takeProfit = array (
         'data' => 'rank',
       ),
     ),
-    'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
-    'title' => '贖回入帳通知',
+    'thumbnailImageUrl' => 'https://www.forexboat.com/wp-content/uploads/2016/10/Take-Profit-e1476972246124.jpg',
+    'title' => '基金停利通知',
     'text' => '您的基金 ['.$randomFund->name.'] 已達您設定的停利點。',
   ),
 );
