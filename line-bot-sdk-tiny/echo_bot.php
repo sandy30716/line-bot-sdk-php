@@ -334,6 +334,10 @@ $takeProfit = array (
   ),
 );
 
+$notifications = array(rebalance=>$rebalance,redemption=>$redemption,takeProfit=>$takeProfit);
+$random_keys=array_rand($notifications);
+$randomNotification = $notifications[$random_keys];
+
 $fundinfo=array (
   'type' => 'template',
   'altText' => 'this is a buttons template',
@@ -950,8 +954,19 @@ foreach ($client->parseEvents() as $event) {
                                 
                             )
                         ));
-
-            sleep(3);
+                    for($i=1;$i<4;$i++){
+                    sleep(1);
+                    $client->pushMessage(array(
+                        //'to' => (string)$userId,
+                        'to' => 'U62947eae2d2d6382bb1f222b03cdb80f',
+                            'messages' => array(
+                              array(
+                                'type' => 'text',
+                                'text' => $i.'個月後...'
+                              ) 
+                            )
+                    ));             
+                    }
                     $client->pushMessage(array(
                         //'to' => (string)$userId,
                         'to' => 'U62947eae2d2d6382bb1f222b03cdb80f',
@@ -960,7 +975,7 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'text',
                                 'text' => '親愛ㄉ'.$name.'您好 ,好久不見!'
                               ),
-                              $rebalance
+                              $randomNotification
                                 
                             )
                     )); 
