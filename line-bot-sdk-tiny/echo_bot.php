@@ -953,7 +953,7 @@ foreach ($client->parseEvents() as $event) {
 
             sleep(5);
                     $client->pushMessage(array(
-                        'to' => $userId,
+                        'to' => (string)$userId,
                         'messages' => array(
                                 $rebalance
                          )
