@@ -919,7 +919,7 @@ foreach ($client->parseEvents() as $event) {
 
             //get profile
 
-            $bot = new \LINE\LINEBot(new CurlHTTPClient($channelAccessToken), [
+            /*$bot = new \LINE\LINEBot(new CurlHTTPClient($channelAccessToken), [
                 'channelSecret' => $channelSecret
             ]);
 
@@ -932,14 +932,39 @@ foreach ($client->parseEvents() as $event) {
             }
             else{
               $displayName = 'QQQ';
-            }
+            }*/
+
+
+$ch = curl_init('https://api.line.me/v2/bot/profile/U62947eae2d2d6382bb1f222b03cdb80f');
+
+// Returns the data/output as a string instead of raw data
+//curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Good practice to let people know who's accessing their servers. See https://en.wikipedia.org/wiki/User_agent
+//curl_setopt($ch, CURLOPT_USERAGENT, 'YourScript/0.1 (contact@email)');
+
+//Set your auth headers
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Authorization: Bearer ' . $channelAccessToken
+    ));
+
+// get stringified data/output. See CURLOPT_RETURNTRANSFER
+$data = curl_exec($ch);
+
+// get info about the request
+$info = curl_getinfo($ch);
+
+// close curl resource to free up system resources 
+curl_close($ch);
+
 
                         $client->replyMessage(array(
                             'replyToken' => $event['replyToken'],
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'hi~'.$userId.$displayName
+                                'text' => 'hi~'.$userId.$data
                               )
                                 
                             )
