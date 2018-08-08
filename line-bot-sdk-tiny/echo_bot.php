@@ -320,9 +320,11 @@ $takeProfit = array (
       ),
       3 => 
       array (
-        'type' => 'uri',
-        'label' => '看市場分析',
-        'uri' => 'https://www.esunbank.com.tw/event/wealth/epaper/20180730/index.html',
+      array (
+        'type' => 'postback',
+        'label' => '看熱門基金',
+        'text' => '看熱門基金',
+        'data' => 'rank',
       ),
     ),
     'thumbnailImageUrl' => 'https://www.esunbank.com.tw/event/wealth/fundworld/images/sunny.svg',
@@ -895,6 +897,14 @@ foreach ($client->parseEvents() as $event) {
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                                 $popularRank1
+                         )
+                    )); 
+              }
+              else if($postbackData==='rank'){
+                    $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                                $rank
                          )
                     )); 
               }
