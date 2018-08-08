@@ -934,29 +934,22 @@ foreach ($client->parseEvents() as $event) {
               $displayName = 'QQQ';
             }*/
 
+$ch = curl_init();
 
-$ch = curl_init('https://api.line.me/v2/bot/profile/U62947eae2d2d6382bb1f222b03cdb80f');
+curl_setopt($ch, CURLOPT_URL, "https://api.line.me/v2/bot/profile/U62947eae2d2d6382bb1f222b03cdb80f");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 
-// Returns the data/output as a string instead of raw data
-//curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-// Good practice to let people know who's accessing their servers. See https://en.wikipedia.org/wiki/User_agent
-//curl_setopt($ch, CURLOPT_USERAGENT, 'YourScript/0.1 (contact@email)');
+$headers = array();
+$headers[] = "Authorization: Bearer /lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73Gm76nhKPnhd9tVLwcX/SoTiQ91o+WytapLvkDuXfQz6ZzxAnXLWMlK6OPv1XRmiLj308Hc4yenYjOTFF/As8UF59izRAQdB04t89/1O/w1cDnyilFU=";
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-//Set your auth headers
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Authorization: Bearer ' . $channelAccessToken
-    ));
-
-// get stringified data/output. See CURLOPT_RETURNTRANSFER
-$data = curl_exec($ch);
-
-// get info about the request
-$info = curl_getinfo($ch);
-
-// close curl resource to free up system resources 
-curl_close($ch);
+$result = curl_exec($ch);
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+}
+curl_close ($ch);
 
 
                         $client->replyMessage(array(
@@ -964,7 +957,7 @@ curl_close($ch);
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'hi~'.$userId.$data
+                                'text' => 'hihihi~'.$userId.$data
                               )
                                 
                             )
