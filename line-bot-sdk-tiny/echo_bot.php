@@ -957,7 +957,7 @@ curl_close ($ch);
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'hihihi~'.$userId.$data
+                                'text' => 'hihihi~'.$userId.var_dump($result)
                               )
                                 
                             )
