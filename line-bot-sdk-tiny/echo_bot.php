@@ -914,17 +914,34 @@ foreach ($client->parseEvents() as $event) {
 
         case 'follow':
             $source = $event['source'];
-                        $replyMsg = 'hi!';
+            $replyMsg = 'hi!';
+            $userId = $source['userId'];
+
+            //get profile
+            $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
+            $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
+            $response = $bot->getProfile($userId);
+            if ($response->isSucceeded()) {
+                $profile = $response->getJSONDecodedBody();
+                $userName = $profile['displayName'];
+                echo $profile['displayName'];
+                echo $profile['pictureUrl'];
+                echo $profile['statusMessage'];
                         $client->replyMessage(array(
                             'replyToken' => $event['replyToken'],
                             'messages' => array(
                                 array(
                                     'type' => 'text',
-                                    'text' => $replyMsg.$source['userId']
+                                    'text' => $replyMsg.$displayName
                                 )
                                 
                             )
                         ));
+            }
+
+
+
+
 
         break;
 
