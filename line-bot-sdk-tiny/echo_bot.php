@@ -912,6 +912,22 @@ foreach ($client->parseEvents() as $event) {
 
               break;
 
+        case 'follow':
+            $source = $event['source'];
+                        $replyMsg = 'hi!';
+                        $client->replyMessage(array(
+                            'replyToken' => $event['replyToken'],
+                            'messages' => array(
+                                array(
+                                    'type' => 'text',
+                                    'text' => $replyMsg.$source['userId']
+                                )
+                                
+                            )
+                        ));
+
+        break;
+
         default:
             error_log("Unsupporeted event type: " . $event['type']);
             break;
