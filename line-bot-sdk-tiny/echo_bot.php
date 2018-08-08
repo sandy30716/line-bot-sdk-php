@@ -945,8 +945,10 @@ $headers = array();
 $headers[] = "Authorization: Bearer /lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73Gm76nhKPnhd9tVLwcX/SoTiQ91o+WytapLvkDuXfQz6ZzxAnXLWMlK6OPv1XRmiLj308Hc4yenYjOTFF/As8UF59izRAQdB04t89/1O/w1cDnyilFU=";
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
+$msg='QQ';
 $result = curl_exec($ch);
 if (curl_errno($ch)) {
+    $msg='error!!!!'. curl_error($ch);
     echo 'Error:' . curl_error($ch);
 }
 curl_close ($ch);
@@ -957,7 +959,7 @@ curl_close ($ch);
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'hihihi~'.$userId.var_dump($result)
+                                'text' => 'hihihihaha~'.$userId.$msg
                               )
                                 
                             )
