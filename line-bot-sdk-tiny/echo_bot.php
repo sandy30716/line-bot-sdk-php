@@ -959,7 +959,8 @@ foreach ($client->parseEvents() as $event) {
                               array(
                                 'type' => 'text',
                                 'text' => '親愛ㄉ'.$name.'您好 ,好久不見!'
-                              )
+                              ),
+                              $rebalance
                                 
                             )
                     )); 
