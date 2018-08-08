@@ -927,7 +927,7 @@ foreach ($client->parseEvents() as $event) {
 
 
             $headers = array();
-            $headers[] = "Authorization: Bearer /".$channelAccessToken;
+            $headers[] = "Authorization: Bearer ".$channelAccessToken;
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
             $result = curl_exec($ch);
