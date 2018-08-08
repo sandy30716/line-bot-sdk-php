@@ -677,6 +677,41 @@ $popularRank1=array (
   ),
 );
 
+$type = array (
+  'type' => 'template',
+  'altText' => 'this is a buttons template',
+  'template' => 
+  array (
+    'type' => 'buttons',
+    'actions' => 
+    array (
+      0 => 
+      array (
+        'type' => 'postback',
+        'label' => '玉山精選人氣基金',
+        'text' => '有哪些玉山精選人氣基金？',
+        'data' => 'popular',
+      ),
+      1 => 
+      array (
+        'type' => 'postback',
+        'label' => '波動最小',
+        'text' => '我想看波動最小的',
+        'data' => 'popular',
+      ),
+      2 => 
+      array (
+        'type' => 'postback',
+        'label' => '近三月績效最好',
+        'text' => '我想看績效最好的',
+        'data' => 'popular',
+      ),
+    ),
+    'title' => '熱門基金',
+    'text' => '想知道大家都在關注哪些基金嗎？',
+  ),
+);
+
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
@@ -732,7 +767,7 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'text',
                                 'text' => '你較勇於嘗試新觀念新方法新事物，也願意利用風險較高或是新推出的金融商品作為投資工具，來獲取較高的報酬，屬於行為積極的理財投資者，具有較高的投資風險容忍度。儘管金融投資工具擁有高報酬、高風險的特性，但高風險卻不保證必然可獲得較高的投資報酬。建議在選擇理財投資工具時，除了高報酬率之外，也應該注意其風險高低，以免過於樂觀而忽略了所隱含的風險。以下人氣基金適合積極型的你：'
                               ),
-                              $popularRank1
+                              $type
                                 
                             )
                         ));
@@ -745,7 +780,7 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'text',
                                 'text' => '你願意承受部分風險，追求資產能有成長的機會，個性較為積極主動，生活中願意嘗試新鮮的事物，對理財相關的產品接受度較高，在資產配置中可將共同基金列為資產成長主力，但也別忘了應保持持有部分的流動資金及定存，使資產在穩定中成長。以下人氣基金適合成長型的你：'
                               ),
-                              $popularRank1
+                              $type
                                 
                             )
                         ));
@@ -758,7 +793,7 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'text',
                                 'text' => '你願意承受稍高的風險，以獲取較高的報酬，但每當作一個決策時，必定會慎重評估其可能隱含的損失風險，風險承受度適中。建議可以多吸收各種投資理財或新金融商品的相關知識，以利在不同的經濟景氣循環下選擇適當的金融投資工具，達成理財目標。以下人氣基金適合穩健型的你：'
                               ),
-                              $popularRank1
+                              $type
                                 
                             )
                         ));
@@ -771,7 +806,7 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'text',
                                 'text' => '你個性較穩重，期待投資能夠盡量保本並有穩定的回報，不輕易嘗試波動較大的金融投資工具，其實對金融投資工具而言，高報酬、高風險雖然是一體的兩面，但只要仔細瞭解不同金融投資商品的特質並規劃得當，納入一些相對風險較低的金融投資工具，將更能完成各項理財規劃。以下人氣基金適合保守型的你：'
                               ),
-                              $popularRank1
+                              $type
                                 
                             )
                         ));
@@ -852,6 +887,14 @@ foreach ($client->parseEvents() as $event) {
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                                 $market
+                         )
+                    )); 
+              }
+              else if($postbackData==='popular'){
+                    $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                                $popularRank1
                          )
                     )); 
               }
