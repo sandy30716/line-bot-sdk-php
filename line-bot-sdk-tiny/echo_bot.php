@@ -334,7 +334,7 @@ $takeProfit = array (
   ),
 );
 
-$notifications = array(rebalance=>$rebalance,redemption=>$redemption,takeProfit=>$takeProfit);
+$notifications = array($rebalance,$redemption,$takeProfit);
 $random_keys=array_rand($notifications);
 $randomNotification = $notifications[$random_keys];
 
@@ -955,17 +955,17 @@ foreach ($client->parseEvents() as $event) {
                             )
                         ));
                     for($i=1;$i<4;$i++){
-                    sleep(1);
-                    $client->pushMessage(array(
-                        //'to' => (string)$userId,
-                        'to' => 'U62947eae2d2d6382bb1f222b03cdb80f',
-                            'messages' => array(
-                              array(
-                                'type' => 'text',
-                                'text' => $i.'個月後...'
-                              ) 
-                            )
-                    ));             
+                      sleep(1);
+                      $client->pushMessage(array(
+                          //'to' => (string)$userId,
+                          'to' => 'U62947eae2d2d6382bb1f222b03cdb80f',
+                              'messages' => array(
+                                array(
+                                  'type' => 'text',
+                                  'text' => $i.'個月後...'
+                                ) 
+                              )
+                      ));             
                     }
                     $client->pushMessage(array(
                         //'to' => (string)$userId,
@@ -974,8 +974,8 @@ foreach ($client->parseEvents() as $event) {
                               array(
                                 'type' => 'text',
                                 'text' => '親愛ㄉ'.$name.'您好 ,好久不見!'
-                              ),
-                              $randomNotification
+                              )//,
+                              //$randomNotification
                                 
                             )
                     )); 
