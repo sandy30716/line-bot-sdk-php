@@ -916,19 +916,34 @@ foreach ($client->parseEvents() as $event) {
             $source = $event['source'];
             $replyMsg = 'hi!';
             $userId = $source['userId'];
+
+            //get profile
+
+            $bot = new \LINE\LINEBot(new CurlHTTPClient($channelAccessToken), [
+                'channelSecret' => $channelSecret
+            ]);
+
+            $res = $bot->getProfile($userId);
+            if ($res->isSucceeded()) {
+                $profile = $res->getJSONDecodedBody();
+                $displayName = $profile['displayName'];
+                $statusMessage = $profile['statusMessage'];
+                $pictureUrl = $profile['pictureUrl'];
+            }
+            else{
+              $displayName = 'QQQ';
+            }
+
                         $client->replyMessage(array(
                             'replyToken' => $event['replyToken'],
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'hi~'.$userId
+                                'text' => 'hi~'.$userId.$displayName
                               )
                                 
                             )
                         ));
-
-            //get profile
-
 
         break;
 
