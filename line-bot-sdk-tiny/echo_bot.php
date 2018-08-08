@@ -957,8 +957,8 @@ foreach ($client->parseEvents() as $event) {
                     for($i=1;$i<4;$i++){
                       sleep(1);
                       $client->pushMessage(array(
-                          //'to' => (string)$userId,
-                          'to' => 'U62947eae2d2d6382bb1f222b03cdb80f',
+                          'to' => (string)$userId,
+                          //'to' => 'U62947eae2d2d6382bb1f222b03cdb80f',
                               'messages' => array(
                                 array(
                                   'type' => 'text',
@@ -968,12 +968,12 @@ foreach ($client->parseEvents() as $event) {
                       ));             
                     }
                     $client->pushMessage(array(
-                        //'to' => (string)$userId,
-                        'to' => 'U62947eae2d2d6382bb1f222b03cdb80f',
+                        'to' => (string)$userId,
+                        //'to' => 'U62947eae2d2d6382bb1f222b03cdb80f',
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => '親愛ㄉ'.$name.'您好 ,好久不見!'
+                                'text' => '親愛的'.$name.'您好 ,好久不見!ㄎㄎ'
                               )//,
                               //$randomNotification
                                 
