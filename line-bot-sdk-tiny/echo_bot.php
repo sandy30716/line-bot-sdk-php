@@ -15,8 +15,8 @@
  * under the License.
  */
 require_once('./LINEBotTiny.php');
-$channelAccessToken = '/lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73Gm76nhKPnhd9tVLwcX/SoTiQ91o+WytapLvkDuXfQz6ZzxAnXLWMlK6OPv1XRmiLj308Hc4yenYjOTFF/As8UF59izRAQdB04t89/1O/w1cDnyilFU=';
-$channelSecret = 'bbd40ae0c329ee4732e0b24c1148a37a';
+$channelAccessToken = 'WMHQW5NCy3kTj42HAawh2ACvAHdhl3rWF0yjkMmm+ls0O5+RLzm7TmneIwqOTIiMF5qH6f3b0CMBxkMO9BJptWZUEwQxm7yasa4k7ozhQRDFqtS31/1OB7Ep9m8iSQ8XkekBXPFiss4vL/Q3XgS3nwdB04t89/1O/w1cDnyilFU=';
+$channelSecret = '18844738320293975f367ec929d3fa68';
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
 function emoticon($code){
@@ -927,7 +927,7 @@ foreach ($client->parseEvents() as $event) {
 
 
             $headers = array();
-            $headers[] = "Authorization: Bearer /lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73Gm76nhKPnhd9tVLwcX/SoTiQ91o+WytapLvkDuXfQz6ZzxAnXLWMlK6OPv1XRmiLj308Hc4yenYjOTFF/As8UF59izRAQdB04t89/1O/w1cDnyilFU=";
+            $headers[] = "Authorization: Bearer /".$channelAccessToken;
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
             $result = curl_exec($ch);
