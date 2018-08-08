@@ -340,7 +340,7 @@ $randomNotification = $notifications[$random_keys];
 
 $fundinfo=array (
   'type' => 'template',
-  'altText' => 'this is a buttons template',
+  'altText' => 'this is',
   'template' => 
   array (
     'type' => 'buttons',
@@ -373,7 +373,7 @@ $fundinfo=array (
 );
 $buyOrSell=array (
   'type' => 'template',
-  'altText' => 'this is a confirm template',
+  'altText' => '申購或贖回？',
   'template' => 
   array (
     'type' => 'confirm',
@@ -396,40 +396,13 @@ $buyOrSell=array (
     'text' => '您要申購或贖回？',
   ),
 );
-$buy=array (
-  'type' => 'template',
-  'altText' => 'this is a buttons template',
-  'template' => 
-  array (
-    'type' => 'buttons',
-    'actions' => 
-    array (
-      0 => 
-      array (
-        'type' => 'postback',
-        'label' => '定期定額',
-        'text' => '定期定額',
-        'data' => 'buy1',
-      ),
-      1 => 
-      array (
-        'type' => 'postback',
-        'label' => '單筆申購',
-        'text' => '單筆申購',
-        'data' => 'buy2',
-      ),
-    ),
-    'title' => '申購復華全方位基金',
-    'text' => '請選擇投資方式',
-  ),
-);
 $list=array (
   'type' => 'text',
   'text' => '已將復華全方位基金加入網銀觀察清單，立即登入網銀申購'.emoticon('100050').'→https://ebank.esunbank.com.tw/index.jsp',
 );
 $market=array (
   'type' => 'template',
-  'altText' => 'this is a carousel template',
+  'altText' => '看其他市場',
   'template' => 
   array (
     'type' => 'carousel',
@@ -529,7 +502,7 @@ $market=array (
 $rank=array (
   'type' => 'imagemap',
   'baseUrl' => 'https://i.imgur.com/P2Qquub.png?_ignored=',
-  'altText' => 'This is an imagemap',
+  'altText' => '你的風險等級？',
   'baseSize' => 
   array (
     'width' => 1040,
@@ -590,7 +563,7 @@ $rank=array (
 
 $popularRank1=array (
   'type' => 'template',
-  'altText' => 'this is a carousel template',
+  'altText' => '基金清單',
   'template' => 
   array (
     'type' => 'carousel',
@@ -686,7 +659,7 @@ $popularRank1=array (
 
 $type = array (
   'type' => 'template',
-  'altText' => 'this is a buttons template',
+  'altText' => '想知道大家都在關注哪些基金嗎？',
   'template' => 
   array (
     'type' => 'buttons',
