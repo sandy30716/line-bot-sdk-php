@@ -919,44 +919,25 @@ foreach ($client->parseEvents() as $event) {
 
             //get profile
 
-            /*$bot = new \LINE\LINEBot(new CurlHTTPClient($channelAccessToken), [
-                'channelSecret' => $channelSecret
-            ]);
+            $ch = curl_init();
 
-            $res = $bot->getProfile($userId);
-            if ($res->isSucceeded()) {
-                $profile = $res->getJSONDecodedBody();
-                $displayName = $profile['displayName'];
-                $statusMessage = $profile['statusMessage'];
-                $pictureUrl = $profile['pictureUrl'];
+            curl_setopt($ch, CURLOPT_URL, "https://api.line.me/v2/bot/profile/".$userId);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+
+
+            $headers = array();
+            $headers[] = "Authorization: Bearer /lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73Gm76nhKPnhd9tVLwcX/SoTiQ91o+WytapLvkDuXfQz6ZzxAnXLWMlK6OPv1XRmiLj308Hc4yenYjOTFF/As8UF59izRAQdB04t89/1O/w1cDnyilFU=";
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $result = curl_exec($ch);
+            $jsonResult = json_decode($result, true);
+            $name = $jsonResult['displayName'];
+            if (curl_errno($ch)) {
+                echo 'Error:' . curl_error($ch);
             }
-            else{
-              $displayName = 'QQQ';
-            }*/
 
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_URL, "https://api.line.me/v2/bot/profile/U62947eae2d2d6382bb1f222b03cdb80f");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-
-
-$headers = array();
-$headers[] = "Authorization: Bearer /lVVIqrqKviiUWyOSz+tb+yFQqJtaa8HNMLE3fbw1b6RKuml+KooV8F73Gm76nhKPnhd9tVLwcX/SoTiQ91o+WytapLvkDuXfQz6ZzxAnXLWMlK6OPv1XRmiLj308Hc4yenYjOTFF/As8UF59izRAQdB04t89/1O/w1cDnyilFU=";
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-$msg='QQ';
-$result = curl_exec($ch);
-$jsonResult = json_decode($result, true);
-$name = $jsonResult['displayName'];
-if (curl_errno($ch)) {
-    $msg='error!!!!'. curl_error($ch);
-    echo 'Error:' . curl_error($ch);
-}
-else{
-  $msg='good';
-}
-curl_close ($ch);
+            curl_close ($ch);
 
 
                         $client->replyMessage(array(
@@ -964,11 +945,14 @@ curl_close ($ch);
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'hihihihaha~'.$userId.$name.$msg
+                                'text' => 'Hello! '.$name
                               )
                                 
                             )
                         ));
+
+            sleep(5);
+            
 
         break;
 
