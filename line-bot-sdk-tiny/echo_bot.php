@@ -947,9 +947,14 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 $msg='QQ';
 $result = curl_exec($ch);
+$jsonResult = json_decode($result, true);
+$name = $jsonResult['displayName'];
 if (curl_errno($ch)) {
     $msg='error!!!!'. curl_error($ch);
     echo 'Error:' . curl_error($ch);
+}
+else{
+  $msg='good';
 }
 curl_close ($ch);
 
@@ -959,7 +964,7 @@ curl_close ($ch);
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => 'hihihihaha~'.$userId.$msg
+                                'text' => 'hihihihaha~'.$userId.$name.$msg
                               )
                                 
                             )
