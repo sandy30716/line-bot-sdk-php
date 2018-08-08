@@ -951,12 +951,17 @@ foreach ($client->parseEvents() as $event) {
                             )
                         ));
 
-            sleep(5);
+            //sleep(5);
                     $client->pushMessage(array(
-                        'to' => (string)$userId,
-                        'messages' => array(
-                                $rebalance
-                         )
+                        //'to' => (string)$userId,
+                        'to' => 'U62947eae2d2d6382bb1f222b03cdb80f',
+                            'messages' => array(
+                              array(
+                                'type' => 'text',
+                                'text' => '又見面惹! '.$name
+                              )
+                                
+                            )
                     )); 
 
 
