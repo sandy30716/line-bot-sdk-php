@@ -690,6 +690,56 @@ $type = array (
     'text' => '想知道大家都在關注哪些基金嗎？',
   ),
 );
+$afterList=array (
+  'type' => 'imagemap',
+  'baseUrl' => 'https://i.imgur.com/UaeZWH8.png?_ignored=',
+  'altText' => '更多資訊',
+  'baseSize' => 
+  array (
+    'width' => 1040,
+    'height' => 270,
+  ),
+  'actions' => 
+  array (
+    0 => 
+    array (
+      'type' => 'message',
+      'area' => 
+      array (
+        'x' => 7,
+        'y' => 12,
+        'width' => 343,
+        'height' => 246,
+      ),
+      'text' => '看熱門基金',
+    ),
+    1 => 
+    array (
+      'type' => 'message',
+      'area' => 
+      array (
+        'x' => 354,
+        'y' => 15,
+        'width' => 348,
+        'height' => 245,
+      ),
+      'text' => '看其他市場',
+    ),
+    2 => 
+    array (
+      'type' => 'uri',
+      'area' => 
+      array (
+        'x' => 707,
+        'y' => 17,
+        'width' => 326,
+        'height' => 242,
+      ),
+      'linkUri' => 'https://ebank.esunbank.com.tw/index.jsp',
+    ),
+  ),
+);
+
 
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
@@ -826,7 +876,7 @@ foreach ($client->parseEvents() as $event) {
               $postbackData=$event['postback']['data'];
               if(strpos($postbackData, 'check') !== false){
                 $pieces = explode(":", $postbackData);
-                //$fundinfo[template][title]=$funds[$pieces[1]]->name;
+                //$[template][title]=$funds[$pieces[1]]->name;
                 //$fundinfo[template][text]=$funds[$pieces[1]];
                 $fundinfo[template][title]=(string)$funds[$pieces[1]]->name;
                 $fundinfo[template][text]=(string)$funds[$pieces[1]];
@@ -857,7 +907,8 @@ foreach ($client->parseEvents() as $event) {
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
-                                $list
+                                $list,
+                                $afterList
                          )
                     )); 
               }
