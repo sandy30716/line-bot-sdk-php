@@ -692,7 +692,7 @@ $type = array (
 );
 $afterList=array (
   'type' => 'imagemap',
-  'baseUrl' => 'https://i.imgur.com/UaeZWH8.png?_ignored=',
+  'baseUrl' => 'https://i.imgur.com/79Jwftm.png?_ignored=',
   'altText' => '更多資訊',
   'baseSize' => 
   array (
@@ -758,6 +758,24 @@ foreach ($client->parseEvents() as $event) {
                                     'text' => $replyMsg
                                 ),
                                 $test
+                                
+                            )
+                        ));
+                    }
+                    else if(strpos($message['text'], '看熱門基金') !== false){
+                        $client->replyMessage(array(
+                            'replyToken' => $event['replyToken'],
+                            'messages' => array(
+                              $type
+                                
+                            )
+                        ));
+                    }
+                    else if(strpos($message['text'], '看其他市場') !== false){
+                        $client->replyMessage(array(
+                            'replyToken' => $event['replyToken'],
+                            'messages' => array(
+                                $market
                                 
                             )
                         ));
