@@ -348,23 +348,22 @@ $fundinfo=array (
     array (
       0 => 
       array (
-        'type' => 'postback',
-        'label' => '申購/贖回',
-        'text' => '申購/贖回',
-        'data' => 'buyOrSell',
+        'type' => 'uri',
+        'label' => '詳細資訊',
+        'uri' => 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wr/wr01.djhtm&query=a=ACFH15-2916',
       ),
       1 => 
       array (
         'type' => 'postback',
-        'label' => '加入觀察清單',
-        'text' => '加入觀察清單',
+        'label' => '申購/贖回',
+        'text' => '申購/贖回',
         'data' => 'list',
       ),
       2 => 
       array (
         'type' => 'uri',
-        'label' => '詳細資訊',
-        'uri' => 'https://www.esunbank.com.tw/bank/personal/wealth/fund/search?localpath=/w/wr/wr01.djhtm&query=a=ACFH15-2916',
+        'label' => '贖回',
+        'uri' => 'https://ebank.esunbank.com.tw/index.jsp',
       ),
     ),
     'title' => '復華全方位基金',
@@ -832,9 +831,9 @@ foreach ($client->parseEvents() as $event) {
                 $fundinfo[template][title]=(string)$funds[$pieces[1]]->name;
                 $fundinfo[template][text]=(string)$funds[$pieces[1]];
                 $code = (string)$pieces[1];
-                $fundinfo[template][actions][0][data]='buyOrSell:'.$code;
+                //$fundinfo[template][actions][0][data]='buyOrSell:'.$code;
                 $fundinfo[template][actions][1][data]='list:'.$code;
-                $fundinfo[template][actions][2][uri]=(string)$funds[$pieces[1]]->uri;
+                $fundinfo[template][actions][0][uri]=(string)$funds[$pieces[1]]->uri;
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
