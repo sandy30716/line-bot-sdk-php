@@ -355,8 +355,8 @@ $fundinfo=array (
       1 => 
       array (
         'type' => 'postback',
-        'label' => '申購/贖回',
-        'text' => '申購/贖回',
+        'label' => '申購',
+        'text' => '申購',
         'data' => 'list',
       ),
       2 => 
