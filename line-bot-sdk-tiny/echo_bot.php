@@ -48,7 +48,7 @@ class Fund
     public $code;
     public $uri;
     public function __toString ( ){
-      return '近三個月績效：'.$this->performance.',淨值：'.$this->value.',風險等級：'.$this->level;
+      return '近三個月績效：'.$this->performance.',淨值：'.$this->value.',風險等級：'.$this->level.',庫存損益：1,313';
     }
 }
 
@@ -1012,7 +1012,7 @@ foreach ($client->parseEvents() as $event) {
                             'messages' => array(
                               array(
                                 'type' => 'text',
-                                'text' => '親愛的'.$name.'您好 ,好久不見!ㄎㄎ'
+                                'text' => '親愛的'.$name.'您好 ,好久不見!'
                               ),
                               $randomNotification
                                 
