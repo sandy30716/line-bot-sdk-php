@@ -48,7 +48,7 @@ class Fund
     public $code;
     public $uri;
     public function __toString ( ){
-      return '近三個月績效：'.$this->performance.',淨值：'.$this->value.',風險等級：'.$this->level.',庫存損益：1,313';
+      return '近三個月績效：'.$this->performance.',淨值：'.$this->value.',風險等級：'.$this->level;
     }
 }
 
@@ -692,12 +692,12 @@ $type = array (
 );
 $afterList=array (
   'type' => 'imagemap',
-  'baseUrl' => 'https://i.imgur.com/79Jwftm.png?_ignored=',
+  'baseUrl' => 'https://i.imgur.com/kXByHF2.png?_ignored=',
   'altText' => '更多資訊',
   'baseSize' => 
   array (
     'width' => 1040,
-    'height' => 270,
+    'height' => 379,
   ),
   'actions' => 
   array (
@@ -706,10 +706,10 @@ $afterList=array (
       'type' => 'message',
       'area' => 
       array (
-        'x' => 7,
-        'y' => 12,
+        'x' => 5,
+        'y' => 7,
         'width' => 343,
-        'height' => 246,
+        'height' => 364,
       ),
       'text' => '看熱門基金',
     ),
@@ -719,9 +719,9 @@ $afterList=array (
       'area' => 
       array (
         'x' => 354,
-        'y' => 15,
+        'y' => 8,
         'width' => 348,
-        'height' => 245,
+        'height' => 360,
       ),
       'text' => '看其他市場',
     ),
@@ -731,9 +731,9 @@ $afterList=array (
       'area' => 
       array (
         'x' => 707,
-        'y' => 17,
+        'y' => 8,
         'width' => 326,
-        'height' => 242,
+        'height' => 357,
       ),
       'linkUri' => 'https://ebank.esunbank.com.tw/index.jsp',
     ),
@@ -995,7 +995,7 @@ foreach ($client->parseEvents() as $event) {
                                 
                             )
                         ));
-                    for($i=1;$i<4;$i++){
+                    /*for($i=1;$i<4;$i++){
                       sleep(1);
                       $client->pushMessage(array(
                           'to' => (string)$userId,
@@ -1006,7 +1006,7 @@ foreach ($client->parseEvents() as $event) {
                                 ) 
                               )
                       ));             
-                    }
+                    }*/
                     $client->pushMessage(array(
                         'to' => (string)$userId,
                             'messages' => array(
