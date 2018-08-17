@@ -991,7 +991,12 @@ foreach ($client->parseEvents() as $event) {
                               array(
                                 'type' => 'text',
                                 'text' => 'Hello! '.$name
-                              )
+                              ),
+                              array(
+                                'type' => 'text',
+                                'text' => '親愛的'.$name.'您好 ,好久不見!'
+                              ),
+                              $randomNotification                              
                                 
                             )
                         ));
@@ -1007,7 +1012,7 @@ foreach ($client->parseEvents() as $event) {
                               )
                       ));             
                     }*/
-                    $client->pushMessage(array(
+                    /*$client->pushMessage(array(
                         'to' => (string)$userId,
                             'messages' => array(
                               array(
@@ -1017,7 +1022,7 @@ foreach ($client->parseEvents() as $event) {
                               $randomNotification
                                 
                             )
-                    )); 
+                    )); */
 
 
         break;
