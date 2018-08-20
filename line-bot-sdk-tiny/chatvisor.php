@@ -945,7 +945,7 @@ foreach ($client->parseEvents() as $event) {
                                 $popularRank1
                          )
                     )); 
-              }*/
+              }
               else if($postbackData==='rank'){
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -953,7 +953,7 @@ foreach ($client->parseEvents() as $event) {
                                 $rank
                          )
                     )); 
-              }
+              }*/
 
               break;
 
