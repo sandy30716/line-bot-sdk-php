@@ -938,7 +938,7 @@ foreach ($client->parseEvents() as $event) {
                          )
                     )); 
               }*/
-              /*else if($postbackData==='popular'){
+              else if($postbackData==='popular'){
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -946,7 +946,7 @@ foreach ($client->parseEvents() as $event) {
                          )
                     )); 
               }
-              else if($postbackData==='rank'){
+              /*else if($postbackData==='rank'){
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
